@@ -2,26 +2,148 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@layer base {
+    html {
+        text-rendering: optimizeLegibility;
+    }
+
+    html::-webkit-scrollbar {
+        display: none;
+    }
+
+    p,div,span,a {
+        @apply font-regular;
+    }
+
+    h1, h2, h3, h4 {
+        @apply font-heading text-[#8fdcc2];
+    }
+
+    h1 {
+        @apply text-7xl lg:text-8xl;
+    }
+
+    h2 {
+        @apply text-5xl lg:text-6xl;
+    }
+
+    input, textarea, button, select, a {-webkit-tap-highlight-color: transparent;}
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+@layer components {
+    .layout {
+        @apply bg-emerald-900/95 backdrop-blur-3xl selection:bg-[#8fdcc2] selection:text-green-900/95 relative w-full;
+        transition: all;
+        overflow-x: hidden;
+    }
+    
+    .layout::-webkit-scrollbar {
+        display: none;
+    }
+
+    .heading-big {
+        @apply text-7xl lg:text-8xl;
+    }
+
+    .text-content {
+        @apply text-green-50/80 text-base sm:text-base lg:text-lg font-regular tracking-wide;
+    }
+    
+    .layout-animate {
+        background-color: transparent !important;
+        @apply bg-gradient-to-tr from-emerald-950/95 via-emerald-900/95 to-lime-900/95;
+        background-size: 200% 200%;
+        background-position: 0% 100%;
+        -webkit-animation: BackgroundAnimation 20s cubic-bezier(.28,1.18,.74,.8) infinite;
+        -moz-animation: BackgroundAnimation 20s cubic-bezier(.28,1.18,.74,.8) infinite;
+        animation: BackgroundAnimation 20s cubic-bezier(.28,1.18,.74,.8) infinite;
+    }
+
+    
+    .playing {
+        @apply w-7 h-7 rounded-full flex justify-between items-end bg-white/20 p-2 box-border;
+    }
+  
+    .playing__bar {
+        @apply w-[30%] inline-block bg-white h-full;
+        animation: up-and-down 1.3s ease infinite alternate;
+    }
+  
+    .playing__bar1 {
+        height: 60%;
+    }
+  
+    .playing__bar2 {
+        height: 30%;
+        animation-delay: -2.2s;
+    }
+  
+    .playing__bar3 {
+        height: 75%;
+        animation-delay: -3.7s;
+    }
+
+    .blog-card {
+        @apply flex rounded-xl p-2 bg-emerald-700/80 ring-1 ring-emerald-300/60;
+    }
+
+    .horizontal {
+        @apply flex-row space-x-5 space-y-0;
+    }
+
+    .vertical {
+        @apply flex-col space-y-3 space-x-0;
+    }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@keyframes BackgroundAnimation {
+    0% {
+        background-position: 0% 100%;
+    }
+
+    12% {
+        background-position: 75% 75%;
+    }
+
+    37% {
+        background-position: 25% 25%;
+    }
+
+    50% {
+        background-position: 70% 30%;
+    }
+
+    62% {
+        background-position: 25% 25%;
+    }
+
+    75% {
+        background-position: 75% 75%;
+    }
+
+    100% {
+        background-position: 0% 100%;
+    }
+}
+
+@keyframes up-and-down {
+    10% {
+      height: 30%;
+    }
+    
+    30% {
+      height: 100%;
+    }
+    
+    60% {
+      height: 50%;
+    }
+    
+    80% {
+      height: 75%;
+    }
+    
+    100% {
+      height: 60%;
+    }
 }
