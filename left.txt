@@ -1,4 +1,0 @@
-In terms of design left:
-1. Single blog page
-3. Content I create page 
-4. Ongoing projects page
