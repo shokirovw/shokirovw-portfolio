@@ -30,10 +30,26 @@ export class SanityBase {
     static AllSchemas (): SanitySchemaType[] {
         return [PersonalInfoSanitySchema, NavigationBarSanitySchema]
     }
+
+    static generateOptionsFromArray (title_arr: string[], value_arr: any[] = title_arr): { title: string; value: string; }[] {
+        let arr = [];
+        for (let i = 0; i < title_arr.length; ++i) {
+            arr.push({ title: title_arr[i], value: value_arr[i] });
+        }
+        return arr;
+    }
 }
 
 export function getAllSanitySchemas () {
     return SanityBase.AllSchemas();
+}
+
+export function generateOptionsFromArray (title_arr: string[], value_arr: any[] = title_arr): { title: string; value: string; }[] {
+    let arr = [];
+    for (let i = 0; i < title_arr.length; ++i) {
+        arr.push({ title: title_arr[i], value: value_arr[i] });
+    }
+    return arr;
 }
 
 

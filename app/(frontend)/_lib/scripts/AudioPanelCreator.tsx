@@ -4,8 +4,8 @@ import { useEffect, useRef, useState } from 'react';
 import AudioPanelComponent from '../components/AudioPanelComponent';
 
 const audio_list: { name: string; src: string; }[] = [
-  { name: "Harry Styles - As It Was", src: "https://dl2.mp3party.net/online/10444033.mp3" },
-  { name: "Jony - Никак", src: "https://dl2.mp3party.net/online/10593121.mp3" },
+  { name: "Harry Styles - As It Was", src: "https://cdn8.sefon.pro/prev/rTjx5CP8RtDap502o2Fw1Q/1696402559/295/Harry%20Styles%20-%20As%20It%20Was%20%28192kbps%29.mp3" },
+  { name: "Jony - Никак", src: "https://cdn2.sefon.pro/prev/wuf4sYvSUPk78R_4l6OedQ/1696401712/330/JONY%20-%20%D0%9D%D0%B8%D0%BA%D0%B0%D0%BA%20%28192kbps%29.mp3" },
   { name: "Ezio's family", src: "/audio.mp3" }
 ];
 

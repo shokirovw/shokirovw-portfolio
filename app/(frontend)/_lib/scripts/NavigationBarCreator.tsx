@@ -2,14 +2,10 @@ import { getCurrentPathname } from "./PageHelper";
 import { NavigationbarCompInterface } from "../../_lib/components/NavigationBarComponent";
 import NavigationBarComponent from "../../_lib/components/NavigationBarComponent";
 import { AllIconNames, IconName } from "../components/ClientIcons";
-import { SanityBase, SanitySchemaType, groq } from "./SanityHelper";
+import { SanityBase, SanitySchemaType, groq, generateOptionsFromArray } from "./SanityHelper";
 
 function IconNamesForSanityOptions () {
-    let arr = [];
-    for (let i = 0; i < AllIconNames.length; ++i) {
-        arr.push({ title: AllIconNames[i], value: AllIconNames[i] });
-    }
-    return arr;
+    return generateOptionsFromArray(AllIconNames);
 }
 
 export const NavigationBarSanitySchema: SanitySchemaType = {

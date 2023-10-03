@@ -1,6 +1,9 @@
-import { PersonalInformation, PersonalDataType } from "../classes/PersonalInfo";
-import { getAsyncSingletonInstance } from "../classes/Singletonize3";
-import { SanityBase, groq, SanitySchemaType } from "./SanityHelper";
+import { PersonalInformation, PersonalDataType, social_networks_list, PersonalInfoSocialAccountType } from "../classes/PersonalInfo";
+import { SanityBase, generateOptionsFromArray, groq, SanitySchemaType } from "./SanityHelper";
+
+function NetworkNamesForSanityOptions () {
+    return generateOptionsFromArray(social_networks_list);
+}
 
 export const PersonalInfoSanitySchema: SanitySchemaType = {
     name: 'global_info',
@@ -17,19 +20,32 @@ export const PersonalInfoSanitySchema: SanitySchemaType = {
             title: 'Brief Description',
             type: 'string'
         },
+        {
+            name: 'social_media_data',
+            title: "Social media data",
+            type: "array",
+            of: [{
+                type: "object", fields: [
+                    { name: "network_name", title: "Social network name", type: "string", options: { list: NetworkNamesForSanityOptions() } },
+                    { name: "profile_link", title: "Link to your profile", type: "string" }
+                ]
+            }]
+        }
     ]
 }
 
 type SanityDataTypescriptSchema = {
     fullname: string;
     brief_description: string;
+    social_media_data: PersonalInfoSocialAccountType[];
 }
 
 class PersonalInformationSanity extends PersonalInformation {
     protected fetchData (): Promise<PersonalDataType> { // we need to return everything that PersonalInfo Class required (name, surname, ...)
         let query = groq`*[_type == "global_info"]{
             fullname,
-            brief_description
+            brief_description,
+            social_media_data
         }[0]`;
 
         return SanityBase.fetchData(query).then((v: SanityDataTypescriptSchema) => { 
@@ -38,10 +54,7 @@ class PersonalInformationSanity extends PersonalInformation {
                 name: v.fullname.split(" ")[0],
                 surname: v.fullname.split(" ")[1],
                 brief_description: v.brief_description,
-                social_media_data: [
-                    { network_name: "Youtube", profile_link: "https://www.youtube.com/@shokirovs_cloud" },
-                    { network_name: "Github", profile_link: "https://github.com/shokirovw" }
-                ]
+                social_media_data: v.social_media_data
             }
         });
     }

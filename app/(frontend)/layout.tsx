@@ -1,4 +1,4 @@
-export const revalidate = 100; 
+export const revalidate = 3600; 
 
 import './_lib/global_styles.css';
 import ApplyOurFont from '@/app/(frontend)/_lib/scripts/FontManager';
