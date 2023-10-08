@@ -1,5 +1,5 @@
 import { PersonalInformation, PersonalDataType, social_networks_list, PersonalInfoSocialAccountType } from "../classes/PersonalInfo";
-import { SanityBase, generateOptionsFromArray, groq, SanitySchemaType } from "./SanityHelper";
+import { generateOptionsFromArray, groq, SanitySchemaType, sanityFetch } from "./SanityHelper";
 
 function NetworkNamesForSanityOptions () {
     return generateOptionsFromArray(social_networks_list);
@@ -34,29 +34,26 @@ export const PersonalInfoSanitySchema: SanitySchemaType = {
     ]
 }
 
-type SanityDataTypescriptSchema = {
-    fullname: string;
-    brief_description: string;
-    social_media_data: PersonalInfoSocialAccountType[];
-}
+
 
 class PersonalInformationSanity extends PersonalInformation {
     protected fetchData (): Promise<PersonalDataType> { // we need to return everything that PersonalInfo Class required (name, surname, ...)
-        let query = groq`*[_type == "global_info"]{
+        type IncomingSchemaType = {
+            fullname: string;
+            brief_description: string;
+            social_media_data: PersonalInfoSocialAccountType[];
+        }
+
+        return sanityFetch(groq`*[_type == "global_info"]{
             fullname,
             brief_description,
             social_media_data
-        }[0]`;
-
-        return SanityBase.fetchData(query).then((v: SanityDataTypescriptSchema) => { 
-            // aligning data from sanity to PersonalInfoInterface
-            return {
-                name: v.fullname.split(" ")[0],
-                surname: v.fullname.split(" ")[1],
-                brief_description: v.brief_description,
-                social_media_data: v.social_media_data
-            }
-        });
+        }[0]`, (db_data: IncomingSchemaType) => ({
+            name: db_data.fullname.split(" ")[0],
+            surname: db_data.fullname.split(" ")[1],
+            brief_description: db_data.brief_description,
+            social_media_data: db_data.social_media_data
+        }));
     }
 }
 

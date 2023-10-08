@@ -2,6 +2,8 @@ import { createClient, groq } from "next-sanity";
 import { PersonalInfoSanitySchema } from "./PersonalInfoCreator";
 import { NavigationBarSanitySchema } from "./NavigationBarCreator";
 import { cache } from "react";
+import { SongsSanitySchema } from "./AudioPanelCreator";
+import { PersonalInfoSocialAccountType } from "../classes/PersonalInfo";
 
 export { groq };
 
@@ -21,14 +23,13 @@ export class SanityBase {
     });
 
     static fetchData (groq_string: string) {
-        console.log("Data is being fetched");
         return cache(async () => {
             return await SanityBase.client.fetch(groq_string);
         })();
     }
 
     static AllSchemas (): SanitySchemaType[] {
-        return [PersonalInfoSanitySchema, NavigationBarSanitySchema]
+        return [PersonalInfoSanitySchema, NavigationBarSanitySchema, SongsSanitySchema]
     }
 
     static generateOptionsFromArray (title_arr: string[], value_arr: any[] = title_arr): { title: string; value: string; }[] {
@@ -51,6 +52,14 @@ export function generateOptionsFromArray (title_arr: string[], value_arr: any[] 
     }
     return arr;
 }
+
+export function sanityFetch <T, F> (query: string, receiving_function?: { (v: T): F }): Promise<F> {
+    if (receiving_function) {
+        return SanityBase.fetchData(query).then(receiving_function);
+    } else {
+        return SanityBase.fetchData(query).then((data: any) => data);
+    }
+} 
 
 
 

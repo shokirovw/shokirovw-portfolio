@@ -2,7 +2,7 @@ import { getCurrentPathname } from "./PageHelper";
 import { NavigationbarCompInterface } from "../../_lib/components/NavigationBarComponent";
 import NavigationBarComponent from "../../_lib/components/NavigationBarComponent";
 import { AllIconNames, IconName } from "../components/ClientIcons";
-import { SanityBase, SanitySchemaType, groq, generateOptionsFromArray } from "./SanityHelper";
+import { SanitySchemaType, groq, generateOptionsFromArray, sanityFetch } from "./SanityHelper";
 
 function IconNamesForSanityOptions () {
     return generateOptionsFromArray(AllIconNames);
@@ -36,42 +36,10 @@ type SanityNavItemData = {
     page_icon?: IconName | '';
 }
 
-function fetchNavDataFromSanity (): Promise<SanityNavItemData[]> {
-    // return [
-    //     {
-    //         page_name: 'Home',
-    //         page_path: '/home',
-    //         page_group: 'global'
-    //     },
-    //     {
-    //         page_name: 'About',
-    //         page_path: '/about',
-    //         page_group: 'global'
-    //     },
-    //     {
-    //         page_name: 'Blog',
-    //         page_path: '/blog',
-    //         page_group: 'global'
-    //     },
-    //     {
-    //         page_name: 'Projects',
-    //         page_path: '/projects',
-    //         page_group: 'global'
-    //     },
-    //     {
-    //         page_name: 'Book recommendations',
-    //         page_path: '/book',
-    //         page_group: 'Miscellaneous',
-    //         page_icon: "Picture"
-    //     }
-    // ]
-    let query = groq`*[_type == "navigation_bar_info"]{
+function fetchNavDataFromSanity (): Promise<SanityNavItemData[]> { 
+    return sanityFetch(groq`*[_type == "navigation_bar_info"]{
         pages
-    }[0]`; 
-
-    return SanityBase.fetchData(query).then((v: any) => {   
-        return v.pages;
-    });
+    }[0]`);
 }
 
 function ConvertFromDBToCompInterface (nav_data: SanityNavItemData[]): NavigationbarCompInterface[] {
@@ -110,3 +78,32 @@ export default async function OurNavigationBar () {
         <NavigationBarComponent current_pathname={"/home"} items_data={navdata} />
     );
 }
+
+// return [
+    //     {
+    //         page_name: 'Home',
+    //         page_path: '/home',
+    //         page_group: 'global'
+    //     },
+    //     {
+    //         page_name: 'About',
+    //         page_path: '/about',
+    //         page_group: 'global'
+    //     },
+    //     {
+    //         page_name: 'Blog',
+    //         page_path: '/blog',
+    //         page_group: 'global'
+    //     },
+    //     {
+    //         page_name: 'Projects',
+    //         page_path: '/projects',
+    //         page_group: 'global'
+    //     },
+    //     {
+    //         page_name: 'Book recommendations',
+    //         page_path: '/book',
+    //         page_group: 'Miscellaneous',
+    //         page_icon: "Picture"
+    //     }
+    // ]
