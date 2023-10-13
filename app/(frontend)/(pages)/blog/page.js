@@ -33,7 +33,7 @@ export default function BlogPage () {
     );
 }
 
-export function ImageComponent ({ src = '/pic.jpg' }) {
+function ImageComponent ({ src = '/pic.jpg' }) {
     return (
         <Image src={src} width={1200} height={750} alt="" className='transition-all w-full h-full rounded-xl object-cover' style={{ objectPosition: "50% 22%" }}  />
     );
