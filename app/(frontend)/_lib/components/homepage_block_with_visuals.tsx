@@ -16,11 +16,11 @@ export default function HomepageBlockWithVisuals ({ heading, description, extend
             <div className='container max-w-7xl text-center p-12 relative'>
               <HomeVisuals />
     
-              <motion.h2 {...heading_anim} transition={{ ease: "backOut" }} className='text-4xl sm:text-5xl lg:text-8xl'>
+              <motion.h1 {...heading_anim} transition={{ ease: "backOut" }}>
                 {heading}
-              </motion.h2>
+              </motion.h1>
     
-              <motion.p {...heading_anim} transition={{ ease: "backOut", delay: 0.2 }} className='text-green-50/80 text-lg lg:text-2xl mt-6'>
+              <motion.p {...heading_anim} transition={{ ease: "backOut", delay: 0.2 }} className='text-lg lg:text-2xl mt-6'>
                 {description}
               </motion.p>
               <div className='mt-10'>

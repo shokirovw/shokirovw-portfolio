@@ -15,16 +15,24 @@
         @apply font-regular;
     }
 
+    p {
+        @apply text-paragraphc;
+    }
+
     h1, h2, h3, h4 {
-        @apply font-heading text-[#8fdcc2];
+        @apply font-heading text-headingc;
     }
 
     h1 {
-        @apply text-7xl lg:text-8xl;
+        @apply text-6xl sm:text-5xl lg:text-8xl;
     }
 
     h2 {
         @apply text-5xl lg:text-6xl;
+    }
+
+    h4 {
+        @apply text-paragraphc text-lg lg:text-2xl;
     }
 
     input, textarea, button, select, a {-webkit-tap-highlight-color: transparent;}
@@ -32,7 +40,7 @@
 
 @layer components {
     .layout {
-        @apply bg-emerald-900/95 backdrop-blur-3xl selection:bg-[#8fdcc2] selection:text-green-900/95 relative w-full;
+        @apply bg-emerald-900/95 backdrop-blur-3xl selection:bg-headingc selection:text-green-900/95 relative w-full;
         transition: all;
         overflow-x: hidden;
     }
@@ -45,8 +53,8 @@
         @apply text-7xl lg:text-8xl;
     }
 
-    .text-content {
-        @apply text-green-50/80 text-base sm:text-base lg:text-lg font-regular tracking-wide;
+    .contentp {
+        @apply text-paragraphc text-base sm:text-base lg:text-lg font-regular tracking-wide;
     }
     
     .layout-animate {
@@ -93,6 +101,12 @@
 
     .vertical {
         @apply flex-col space-y-3 space-x-0;
+    }
+}
+
+@layer utilities {
+    .whiten {
+        color: white;
     }
 }
 

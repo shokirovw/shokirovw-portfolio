@@ -12,7 +12,7 @@ export default function AudioPanelComponent ({ audio_name, is_audio_playing, pla
               <BsFillPauseCircleFill onClick={() => playPauseToggle(false)} className='w-5 h-5' />
               <BiSolidSkipNextCircle onClick={() => nextToggle()} className='w-6 h-6' />
             </div>
-            <p className='text-sm xl:text-base'>{audio_name}</p>
+            <p className='text-sm xl:text-base whiten'>{audio_name}</p>
             <div className="playing">
               <span className="playing__bar playing__bar1"></span>
               <span className="playing__bar playing__bar2"></span>
@@ -24,7 +24,7 @@ export default function AudioPanelComponent ({ audio_name, is_audio_playing, pla
             <div className='flex space-x-1 items-center rounded-full'>
               <BsFillPlayCircleFill onClick={() => playPauseToggle(true)} className='w-5 h-5' />
             </div>
-            <p className='text-lg'>Play audio</p>
+            <p className='text-lg whiten'>Play audio</p>
           </>
         )}
       </div>

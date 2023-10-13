@@ -1,4 +1,4 @@
-export const revalidate = 3600; 
+export const revalidate = 0; 
 
 import './_lib/global_styles.css';
 import ApplyOurFont from '@/app/(frontend)/_lib/scripts/FontManager';
@@ -13,6 +13,7 @@ export default async function MainLayout({ children }: { children: React.ReactNo
       <AnimatedBackground>
         <EnableSmoothCursor>
           <LayoutContent>
+
               { children }
           </LayoutContent>
         </EnableSmoothCursor>
@@ -20,9 +21,6 @@ export default async function MainLayout({ children }: { children: React.ReactNo
     </ApplyOurFont>
   );
 }
-
-// getOurPageConfig and NavigationBarContent do indicate it is time to create a schema
-// holding global information about the pages
 
 // Incomplete files are: NavigationbarCreator
 

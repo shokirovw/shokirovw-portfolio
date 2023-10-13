@@ -6,12 +6,16 @@ module.exports = {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    extend: {
-      fontFamily: {
-        heading: ['var(--font-acorn)'],
-        regular: ['var(--font-gtplanar)'],
-      },
+    fontFamily: {
+      heading: ['var(--font-acorn)'],
+      regular: ['var(--font-gtplanar)'],
     },
+    extend: {
+      colors: {
+        headingc: "#8fdcc2",
+        paragraphc: "#f0fdf4cc",
+      }
+    }
   },
   plugins: [
     require('@tailwindcss/forms'),

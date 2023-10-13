@@ -1,13 +1,22 @@
-import { AiFillGithub, AiOutlineTwitter, AiFillYoutube, AiOutlinePicture } from "react-icons/ai";
+import { AiFillGithub, AiOutlineTwitter, AiFillYoutube, AiOutlinePicture, AiOutlineDownload, AiOutlinePaperClip, AiOutlineBook } from "react-icons/ai";
+
+import { IoIosFlash } from 'react-icons/io';
+
+import { SiReadthedocs } from 'react-icons/si';
 
 export const OurIcons = {
     Github: AiFillGithub,
     Twitter: AiOutlineTwitter,
     Youtube: AiFillYoutube,
-    Picture: AiOutlinePicture
+    Picture: AiOutlinePicture,
+    Download: AiOutlineDownload,
+    Paperclip: AiOutlinePaperClip,
+    Flash: IoIosFlash,
+    Docs: SiReadthedocs,
+    Book: AiOutlineBook
 }
 
-export function getIcon (iconname: IconName | string) {
+export function getIcon (iconname: IconName) {
     return OurIcons[iconname];
 }
 

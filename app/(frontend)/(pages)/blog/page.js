@@ -33,9 +33,9 @@ export default function BlogPage () {
     );
 }
 
-function ImageComponent () {
+export function ImageComponent ({ src = '/pic.jpg' }) {
     return (
-        <Image src={'/pic.jpg'} width={1200} height={750} className='transition-all w-full h-full rounded-xl object-cover' style={{ objectPosition: "50% 22%" }}  />
+        <Image src={src} width={1200} height={750} alt="" className='transition-all w-full h-full rounded-xl object-cover' style={{ objectPosition: "50% 22%" }}  />
     );
 }
 

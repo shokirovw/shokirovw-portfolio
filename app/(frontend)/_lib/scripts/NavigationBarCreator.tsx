@@ -13,19 +13,10 @@ export const NavigationBarSanitySchema: SanitySchemaType = {
     title: 'Navigation Bar Data',
     type: 'document',
     fields: [
-        {
-            name: 'pages',
-            title: 'Pages to be displayed',
-            type: 'array',
-            of: [
-                { type: "object", fields: [ 
-                    { name: "page_name", title: "Page name", description: "Please keep shorter", type: "string" },
-                    { name: "page_path", title: "Page path", description: "Must start with /", type: "string" },
-                    { name: "page_group", title: "Page group", description: "Defaults to global", type: "string" },
-                    { name: "page_icon", title: "Page icon", type: "string", options: { list: IconNamesForSanityOptions() } }
-                ], initialValue: { page_group: "global" } }
-            ]
-        }
+        { name: "page_name", title: "Page name", description: "Please keep shorter", type: "string" },
+        { name: "page_path", title: "Page path", description: "Must start with /", type: "string" },
+        { name: "page_group", title: "Page group", description: "Defaults to global", type: "string" },
+        { name: "page_icon", title: "Page icon", type: "string", options: { list: IconNamesForSanityOptions() } }
     ]
 }
 
@@ -38,8 +29,11 @@ type SanityNavItemData = {
 
 function fetchNavDataFromSanity (): Promise<SanityNavItemData[]> { 
     return sanityFetch(groq`*[_type == "navigation_bar_info"]{
-        pages
-    }[0]`);
+        page_name,
+        page_path,
+        page_group,
+        page_icon
+    }`);
 }
 
 function ConvertFromDBToCompInterface (nav_data: SanityNavItemData[]): NavigationbarCompInterface[] {
@@ -72,7 +66,9 @@ function ConvertFromDBToCompInterface (nav_data: SanityNavItemData[]): Navigatio
 export default async function OurNavigationBar () {
     //const current_path = getCurrentPathname();
 
-    let navdata = ConvertFromDBToCompInterface(await fetchNavDataFromSanity());
+    let raw_nav_data = (await fetchNavDataFromSanity()).reverse(); 
+
+    let navdata = ConvertFromDBToCompInterface(raw_nav_data);
 
     return (
         <NavigationBarComponent current_pathname={"/home"} items_data={navdata} />

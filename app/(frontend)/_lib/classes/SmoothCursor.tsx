@@ -16,7 +16,7 @@ export default function SmoothCursor ({ children }: { children: React.ReactNode 
 
     return (
         <>
-            <div style={{ transform: `translateX(${MousePosition[0] - 10}px) translateY(${MousePosition[1] - 10}px)` }} className={`absolute hidden md:flex transition duration-200 ease-out z-100 w-5 h-5 border-2 border-white/80 rounded-full items-center justify-center`}>
+            <div style={{ transform: `translateX(${MousePosition[0] - 10}px) translateY(${MousePosition[1] - 10}px)`, zIndex: -100 }} className={`absolute hidden md:flex transition duration-200 ease-out w-5 h-5 border-2 border-white/80 rounded-full items-center justify-center`}>
                 <div className='w-[4px] h-[4px] bg-white/80 rounded-full'></div>
             </div>
             {children}
