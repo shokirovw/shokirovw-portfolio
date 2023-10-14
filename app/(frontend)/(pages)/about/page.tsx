@@ -1,5 +1,7 @@
 "use client";
 
+export const dynamic = 'force-static';
+
 import Image from 'next/image';
 import StandartPageLayout from '../../_lib/components/StandartPageTopLayout';
 import CustomCard from '../../_lib/components/CardWithPictureAndActions';
