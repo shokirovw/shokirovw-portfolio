@@ -16,7 +16,7 @@ export default function HomepageBlockWithVisuals ({ heading, description, extend
             <div className='container max-w-7xl text-center p-12 relative'>
               <HomeVisuals />
     
-              <motion.h1 {...heading_anim} transition={{ ease: "backOut" }}>
+              <motion.h1 className='text-center' {...heading_anim} transition={{ ease: "backOut" }}>
                 {heading}
               </motion.h1>
     
