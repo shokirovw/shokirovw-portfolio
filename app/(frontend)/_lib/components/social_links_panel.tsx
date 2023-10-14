@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { IconType } from 'react-icons/lib';
-import { getIcon } from './ClientIcons'; 
+import { IconName, getIcon } from './ClientIcons'; 
 
 const container = {
     hidden: { opacity: 0 },
@@ -21,7 +21,7 @@ const item = {
     show: { opacity: 1, y: 0, scale: 1 }
 }
   
-export default function SocialLinksPanel ({ data }: { data: { href: string; iconname: string }[] }) {
+export default function SocialLinksPanel ({ data }: { data: { href: string; iconname: IconName }[] }) {
     return (
       <motion.div variants={container} animate="show" initial="hidden" className='flex w-fit text-white/80 text-lg font-regular space-x-10 mx-auto'>
           {data.map((link, i) => {

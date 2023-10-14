@@ -5,9 +5,9 @@ export type PersonalDataType = {
     social_media_data: PersonalInfoSocialAccountType[];
 }
 
-export const social_networks_list = ['Instagram', 'Telegram', 'Youtube', 'Github', 'Quora', 'Facebook', 'Reddit', 'Twitter'];
+export const social_networks_list = ['Instagram', 'Youtube', 'Github', 'Quora', 'Facebook', 'Reddit', 'Twitter'];
 
-const social_networks_list_constexpr = ['Instagram', 'Telegram', 'Youtube', 'Github', 'Quora', 'Facebook', 'Reddit', 'Twitter'] as const;
+const social_networks_list_constexpr = ['Instagram', 'Youtube', 'Github', 'Quora', 'Facebook', 'Reddit', 'Twitter'] as const;
 
 export type SocialNetworkType = typeof social_networks_list_constexpr[number];
 

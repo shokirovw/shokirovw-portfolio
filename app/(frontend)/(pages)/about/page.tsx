@@ -5,53 +5,8 @@ import StandartPageLayout from '../../_lib/components/StandartPageTopLayout';
 import CustomCard from '../../_lib/components/CardWithPictureAndActions';
 import { IconName, getIcon } from '../../_lib/components/ClientIcons';
 
-
-  // const text_container = {
-  //   hidden: { opacity: 0 },
-  //   show: {
-  //     opacity: 1,
-  //     transition: {
-  //       staggerChildren: 0.1,
-  //       delayChildren: 0.5
-  //     }
-  //   }
-  // }
-
-  // const item_text = {
-  //   hidden: { opacity: 0, transform: "translateX(-20px)" },
-  //   show: { opacity: 1, transform: "translateX(0px)" }
-  // }
-
-
-
-
-
-function MasonryImageGrid () {
-  return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-      <div className="row-span-1 col-span-1 md:row-span-2 md:col-span-2 max-h-96">
-          <div className="aspect-square md:aspect-auto md:h-full">
-            <Image priority={true} src={"/me.jpg"} width={1000} height={1000} alt="" className='transition-all w-full h-full rounded-xl object-cover' style={{ objectPosition: "50% 22%" }}  />
-          </div>
-      </div>
-      <div className="row-span-1 col-span-1 md:row-span-1 md:col-span-2">
-          <div className="aspect-square md:aspect-auto md:h-full">
-            <Image priority={true} src={"/uzb1.jpg"} width={400} height={245} alt="" className='transition-all w-full h-full rounded-xl object-cover' style={{ objectPosition: "50% 22%" }}  />
-          </div>
-      </div>
-      <div className="row-span-1 col-span-1 md:row-span-1 md:col-span-1">
-          <div className="aspect-square md:aspect-auto md:h-full">
-            <Image priority={true} src={"/uzb2.png"} width={300} height={220} alt="" className='transition-all w-full h-full rounded-xl object-cover' style={{ objectPosition: "50% 22%" }}  />
-          </div>
-      </div>
-      <div className="row-span-1 col-span-1 md:row-span-1 md:col-span-1">
-          <div className="aspect-square md:aspect-auto md:h-full">
-            <Image priority={true} src={"/uzb3.jpeg"} width={300} height={220} alt="" className='transition-all w-full h-full rounded-xl object-cover' style={{ objectPosition: "50% 22%" }}  />
-          </div>
-      </div>
-    </div>
-  );
-}
+import { motion } from 'framer-motion';
+import React from 'react';
 
 function Heading ({ children }) {
   return <h1>{children}</h1>
@@ -73,13 +28,19 @@ function StandartGrid ({ children }) {
   )
 }
 
-function Br ({ mode = 1 }: { mode?: 1 | 2 }) {
-  if (mode == 1) {
-    return <br />;
-  } else {
-    return <><br /><br /></>;
-  }
+function Br ({ mode = 1 }: { mode?: 0 | 1 | 2 }) {
+  if (mode == 0) return <></>;
+  else if (mode == 1) return <br />;
+  else return <><br /><br /></>;
 }
+
+function WrapSpacingAround ({ children, spacingMode = 1 } : {
+  children: JSX.Element | JSX.Element[]; spacingMode?: 0 | 1 | 2;
+}) {
+  return <><Br mode={spacingMode} />{children}<Br mode={spacingMode} /></>
+}
+
+
 
 function BatchText ({ text }) {
     return (
@@ -87,24 +48,39 @@ function BatchText ({ text }) {
     );
 }
 
-function Noteblock ({ action, iconname, text, colorstyle = "emerald" }: { action: string; iconname: IconName; text: string, colorstyle?: "emerald" | "teal" }) {
-  let Icon = getIcon(iconname);
 
-  let c = `bg-${colorstyle}-700/60`;
 
+function AnimatedMasonryImageGrid () {
   return (
-    <a href={action}>
-        <div className={`transition-all px-6 py-4 text-[#94ffdd] ${c} rounded-lg flex justify-between hover:bg-teal-700/50 hover:text-[#b7ffe8]`}>
-            <p className='font-regular font-normal text-lg tracking-wide'>{text}</p>
-            <Icon className='inline transition-all w-4 h-4 md:w-8 md:h-8 hover:scale-110 hover:text-white/100' />
-        </div>
-    </a>
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <AnimateElem ix={-100} className='row-span-1 col-span-1 md:row-span-2 md:col-span-2 max-h-96'>
+          <div className="aspect-square md:aspect-auto md:h-full">
+            <Image priority={true} src={"/me.jpg"} width={1000} height={1000} alt="" className='transition-all w-full h-full rounded-xl object-cover' style={{ objectPosition: "50% 22%" }}  />
+          </div>
+      </AnimateElem>
+      <AnimateElem iy={-100} className='row-span-1 col-span-1 md:row-span-1 md:col-span-2'>
+          <div className="aspect-square md:aspect-auto md:h-full">
+            <Image priority={true} src={"/uzb1.jpg"} width={400} height={245} alt="" className='transition-all w-full h-full rounded-xl object-cover' style={{ objectPosition: "50% 22%" }}  />
+          </div>
+      </AnimateElem>
+      <AnimateElem iy={70} className="row-span-1 col-span-1 md:row-span-1 md:col-span-1">
+          <div className="aspect-square md:aspect-auto md:h-full">
+            <Image priority={true} src={"/uzb2.png"} width={300} height={220} alt="" className='transition-all w-full h-full rounded-xl object-cover' style={{ objectPosition: "50% 22%" }}  />
+          </div>
+      </AnimateElem>
+      <AnimateElem ix={70} className='row-span-1 col-span-1 md:row-span-1 md:col-span-1'>
+          <div className="aspect-square md:aspect-auto md:h-full">
+            <Image priority={true} src={"/uzb3.jpeg"} width={300} height={220} alt="" className='transition-all w-full h-full rounded-xl object-cover' style={{ objectPosition: "50% 22%" }}  />
+          </div>
+      </AnimateElem>
+    </div>
   );
 }
 
 function EducationSection () {
     return (
         <>
+            <Br />
             <Subheading>Education</Subheading>
             <Br />
             <StandartGrid>
@@ -137,6 +113,7 @@ function EducationSection () {
 function ProjectsSection () {
     return (
         <>
+            <Br />
             <Subheading>Projects</Subheading>
             <Br />
             <StandartGrid>
@@ -181,24 +158,47 @@ function ProjectsSection () {
     )
 }
 
+function Noteblock ({ action, iconname, text, colorstyle = "emerald" }: { action: string; iconname: IconName; text: string, colorstyle?: "emerald" | "teal" }) {
+  let Icon = getIcon(iconname);
+
+  return (
+    <a href={action}>
+        <div className={`transition-all px-6 py-4 text-[#94ffdd] bg-emerald-700/60 rounded-lg flex justify-between hover:bg-teal-700/50 hover:text-[#b7ffe8]`}>
+            <p className='font-regular font-normal text-lg tracking-wide'>{text}</p>
+            <Icon className='inline transition-all w-4 h-4 md:w-8 md:h-8 hover:scale-110 hover:text-white/100' />
+        </div>
+    </a>
+  );
+}
+
 export default function About () {
     return (
         <StandartPageLayout>
-            <Heading>Hi there!</Heading>
-            <Subheading>I am shokirovw.</Subheading>
-            <ContentText>I'm a frontend developer, optimist, and community builder. I currently work as the VP of Developer Experience at Vercel, where I lead the community for Next.js, an open-source web framework built with React.</ContentText>
-            <Br />
-            <MasonryImageGrid />
-            <Br />
-            <ContentText>I create educational content for developers, teaching them about web development, JavaScript and TypeScript, React and Next.js, and more. This comes in all forms: blog posts, videos, tweets, conference talks, and workshops. You can watch some of my favorites below.</ContentText>
-            <Br />
-            <Noteblock action='https://google.com' iconname='Picture' text='Find out more Uzbekistan pics in here' />
-            <Br mode={2} />
-            <EducationSection />
-            <Br mode={2} />
-            <ProjectsSection />
-            <Br mode={2} />
-            <Noteblock action='/resume.pdf' iconname='Paperclip' text='You can download resume in here' colorstyle='teal' />
+            <ActivateAnimations>
+
+
+              <AnimateStack ix={-20}>
+                <Heading>Hi there!</Heading>
+                <Subheading>I am shokirovw.</Subheading>
+                <ContentText>I'm a frontend developer, optimist, and community builder. I currently work as the VP of Developer Experience at Vercel, where I lead the community for Next.js, an open-source web framework built with React.</ContentText>
+              </AnimateStack>
+
+
+              <WrapSpacingAround>
+                <AnimatedMasonryImageGrid />
+              </WrapSpacingAround>
+
+
+              <AnimateStack iy={40} spacing={{ mode: 1, disableLast: true }}>
+                <ContentText>I create educational content for developers, teaching them about web development, JavaScript and TypeScript, React and Next.js, and more. This comes in all forms: blog posts, videos, tweets, conference talks, and workshops. You can watch some of my favorites below.</ContentText>
+                <Noteblock action='https://google.com' iconname='Picture' text='Find out more Uzbekistan pics in here' />
+                <EducationSection />
+                <ProjectsSection />
+                <Noteblock action='/resume.pdf' iconname='Paperclip' text='You can download resume in here' colorstyle='teal' />
+              </AnimateStack>
+
+
+            </ActivateAnimations>
         </StandartPageLayout>
     );
 }
@@ -213,3 +213,48 @@ export default function About () {
                 <BatchText text={"Designs/visuals"} />
             </div>
             <br /><br /> */
+
+function ActivateAnimations ({ children }) {
+  return (
+    <motion.div variants={{
+      hidden: { opacity: 0 },
+      show: {
+        opacity: 1,
+        transition: {
+          staggerChildren: 0.1,
+          delayChildren: 0
+        }
+      }
+    }} initial="hidden" animate="show">
+      {children}
+    </motion.div>
+  )
+}
+
+function AnimateElem ({ children = <></>, ix = 0, iy = 0, className = "" }: {
+  children?: JSX.Element | JSX.Element[], ix?: number; iy?: number; className?: string;
+}) {
+  return (
+    <motion.div className={className} variants={{
+      hidden: { opacity: 0, transform: `translate(${ix}px, ${iy}px)` }, 
+      show: { opacity: 1, transform: "translate(0px, 0px)" }
+    }}>
+      {children}
+    </motion.div>
+  )
+}
+
+function AnimateStack ({ children, ix = 0, iy = 0, spacing = { mode: 0, disableLast: true } }: {
+  children?: JSX.Element[], ix?: number; iy?: number; spacing?: { mode: 0 | 1 | 2, disableLast: boolean; }
+}) {
+  let spacingElem = <Br mode={spacing.mode} />;
+
+  let i = 0;
+
+  return React.Children.map(children, child => {
+      return <>
+        <AnimateElem ix={ix} iy={iy}>{child}</AnimateElem>
+        {(spacing.disableLast && i++ != children.length - 1) && spacingElem}
+      </>
+  })
+}
