@@ -42,7 +42,7 @@ export default function NavigationBarComponent ({ current_pathname, items_data }
                 }
 
                 return (
-                    <Link href={item.path} key={i}>
+                    <Link href={item.path} key={i} prefetch>
                         <motion.div variants={motionElements.nav_item} className={`${highlightCurrentPage(item.path)} px-4 md:px-6 py-1 rounded-full`}>
                             { inner_comp }
                         </motion.div>

@@ -65,12 +65,12 @@ function AnimatedMasonryImageGrid () {
       </AnimateElem>
       <AnimateElem iy={70} className="row-span-1 col-span-1 md:row-span-1 md:col-span-1">
           <div className="aspect-square md:aspect-auto md:h-full">
-            <Image priority={true} src={"/uzb2.png"} width={300} height={220} alt="" className='transition-all w-full h-full rounded-xl object-cover' style={{ objectPosition: "50% 22%" }}  />
+            <Image priority={true} src={"/uzb2.png"} width={300} height={200} alt="" className='transition-all w-full h-full rounded-xl object-cover' style={{ objectPosition: "50% 22%" }}  />
           </div>
       </AnimateElem>
       <AnimateElem ix={70} className='row-span-1 col-span-1 md:row-span-1 md:col-span-1'>
           <div className="aspect-square md:aspect-auto md:h-full">
-            <Image priority={true} src={"/uzb3.jpeg"} width={300} height={220} alt="" className='transition-all w-full h-full rounded-xl object-cover' style={{ objectPosition: "50% 22%" }}  />
+            <Image priority={true} src={"/uzb3.jpeg"} width={300} height={200} alt="" className='transition-all w-full h-full rounded-xl object-cover' style={{ objectPosition: "50% 22%" }}  />
           </div>
       </AnimateElem>
     </div>
