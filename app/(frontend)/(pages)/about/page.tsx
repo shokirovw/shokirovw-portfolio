@@ -134,7 +134,7 @@ function ProjectsSection () {
                         {text: "Subscribe", action: "https://google.com"}
                     ]} 
                 />
-                <CustomCard heading={"JS Simulations"} subheading={"Diversity of simulations using Javascript"} 
+                {/* <CustomCard heading={"JS Simulations"} subheading={"Diversity of simulations using Javascript"} 
                     pictureSrc={"/jslogo.png"} roundFull={false}
                     text={"Both natural and imaginary phenomenons visualised in JS"} 
                     actions={[
@@ -154,7 +154,7 @@ function ProjectsSection () {
                         {buttonType: true, text: "View in action", iconname: "Flash", action: "https://google.com"},
                         {text: "Github", action: "https://github.com/shokirovw"}
                     ]} 
-                />
+                /> */}
             </StandartGrid>
         </>
     )
@@ -181,8 +181,8 @@ export default function About () {
 
               <AnimateStack ix={-20}>
                 <Heading>Hi there!</Heading>
-                <Subheading>I am shokirovw.</Subheading>
-                <ContentText>I'm a frontend developer, optimist, and community builder. I currently work as the VP of Developer Experience at Vercel, where I lead the community for Next.js, an open-source web framework built with React.</ContentText>
+                <Subheading>I am shokirov.</Subheading>
+                <ContentText>I'm a computer and math enthusiast, most interested in core 3D graphics. Yet Undergraduate studying in Presidential University of Uzbekistan. Aspire to create simple yet artistic and high-quality things. </ContentText>
               </AnimateStack>
 
 
@@ -192,10 +192,11 @@ export default function About () {
 
 
               <AnimateStack iy={40} spacing={{ mode: 1, disableLast: true }}>
-                <ContentText>I create educational content for developers, teaching them about web development, JavaScript and TypeScript, React and Next.js, and more. This comes in all forms: blog posts, videos, tweets, conference talks, and workshops. You can watch some of my favorites below.</ContentText>
+                <ContentText>At times, I create educational content for students tightly blending math and cs, which comes in the form of videos. Still mastering further C++, Web development, core graphics and more. You are welcomed to check some of my archived things below.</ContentText>
                 <Noteblock action='https://google.com' iconname='Picture' text='Find out more Uzbekistan pics in here' />
                 <EducationSection />
                 <ProjectsSection />
+                <Noteblock action='https://youtube.com/@shokirovs_cloud' iconname='Paperclip' text='Proceed here to view some archived videos' colorstyle='teal' />
                 <Noteblock action='/resume.pdf' iconname='Paperclip' text='You can download resume in here' colorstyle='teal' />
               </AnimateStack>
 
