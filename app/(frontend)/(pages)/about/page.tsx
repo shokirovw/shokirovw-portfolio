@@ -100,7 +100,7 @@ function EducationSection () {
                         {text: "See website", action: "https://ictschool.uz/"}
                     ]} 
                 />
-                <CustomCard heading={"New Uzbekistan University"} subheading={"2023-present"} 
+                <CustomCard heading={"Presidential University of Uzbekistan"} subheading={"2023-present"} 
                     pictureSrc={"/newuu.jpg"} 
                     text={"Bachelor's of Economics and Data Science, Applied Math as an additional course"} 
                     actions={[
@@ -123,7 +123,7 @@ function ProjectsSection () {
                     pictureSrc={"/me.jpg"} picturePos='50% 22%' 
                     text={"I create videos based on the stack of math and cs. Try to present ideas in simple and artistic way"} 
                     actions={[
-                        {buttonType: true, iconname: "Youtube", text: "See channel", action: "https://youtube.com/@shokirovs_cloud"}
+                        {buttonType: true, iconname: "Youtube", text: "See channel", action: "https://youtube.com/@shokirovw"}
                     ]} 
                 />
                 <CustomCard heading={"Uzbekistan photos"} subheading={"Gallery website"} 
