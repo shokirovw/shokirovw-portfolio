@@ -1,7 +1,7 @@
-'use client';
-
+import dynamic from "next/dynamic";
 import P5JSPageCommon from "../common";
-import P5JSSoundCircle from "./p5";
+
+const P5JSSoundCircle = dynamic(() => import('./p5'), { ssr: false })
 
 export default function P5JSSample () {
     return (
