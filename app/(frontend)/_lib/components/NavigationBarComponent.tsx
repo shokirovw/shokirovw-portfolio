@@ -24,13 +24,13 @@ const motionElements = {
 
 export default function NavigationBarComponent ({ current_pathname, items_data }: { current_pathname: string; items_data: NavigationbarCompInterface[] }) {
     function highlightCurrentPage (path: string) {
-      if (current_pathname == path) return 'bg-emerald-300/10 ring-1 ring-gray-100/10'
+      if (current_pathname == path) return 'bg-white/10 ring-1 ring-gray-100/10'
       else return ''
     }
 
     return (
         <motion.div variants={motionElements.nav_container} initial="hidden" animate="show"
-          className='flex justify-evenly mx-auto container max-w-min h-fit space-x-0 md:space-x-7 px-10 text-white text-lg'
+          className='flex justify-evenly mx-auto container max-w-min h-fit space-x-0 md:space-x-7 px-4 text-white text-base md:text-lg'
         >
             {items_data.map((item, i) => {
                 let inner_comp;

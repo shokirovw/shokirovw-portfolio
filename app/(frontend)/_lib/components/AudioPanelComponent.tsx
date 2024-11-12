@@ -5,7 +5,7 @@ export default function AudioPanelComponent ({ audio_name, is_audio_playing, pla
     audio_name: string; is_audio_playing: boolean; playPauseToggle: Function; nextToggle: Function;
 }) {
     return (
-      <div className={`flex items-center space-x-3 w-fit rounded-full py-1 px-2 ${is_audio_playing ? "pr-1" : "pr-4"} relative text-white text-lg text-right bg-white/10`}>
+      <div className={`flex items-center space-x-2.5 md:space-x-3 w-fit rounded-full py-1 px-2 ${is_audio_playing ? "pr-1" : "pr-4"} relative text-white text-base md:text-lg text-right bg-white/10`}>
         {is_audio_playing ? (
           <>
             <div className='flex space-x-1 items-center rounded-full'>
@@ -22,9 +22,9 @@ export default function AudioPanelComponent ({ audio_name, is_audio_playing, pla
         ) : (
           <>
             <div className='flex space-x-1 items-center rounded-full'>
-              <BsFillPlayCircleFill onClick={() => playPauseToggle(true)} className='w-5 h-5' />
+              <BsFillPlayCircleFill onClick={() => playPauseToggle(true)} className='w-4 h-4 md:w-5 md:h-5' />
             </div>
-            <p className='text-lg whiten'>Play audio</p>
+            <p className='text-base md:text-lg whiten'>Play audio</p>
           </>
         )}
       </div>

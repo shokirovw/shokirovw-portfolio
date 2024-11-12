@@ -8,6 +8,7 @@ import AnimatedBackground from './_lib/components/NiceAnimatedBackground';
 import EnableSmoothCursor from './_lib/scripts/SmoothCursorCreator';
 import dynamic from 'next/dynamic';
 
+
 const Header = dynamic(() => import('./(pages)/_header/npage'));
 const Footer = dynamic(() => import('./(pages)/_footer/npage'));
 
@@ -28,11 +29,12 @@ export default async function MainLayout({ children }: { children: React.ReactNo
 // Incomplete files are: NavigationbarCreator
 
 function LayoutContent ({ children }) {
+  
   return (
     <>
       <Header /> 
         {children}
-      <Footer />
+      <Footer /> 
     </>
   );
 }

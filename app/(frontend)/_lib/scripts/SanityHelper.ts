@@ -15,11 +15,12 @@ export type SanitySchemaType = {
 }
 
 export class SanityBase {
-    static client = createClient({ // config should be the same with sanity.config.ts
+    static client = createClient({
         projectId: "e037444k",
         dataset: "production",
         apiVersion: '2023-09-19', 
-        useCdn: true 
+        useCdn: true,
+        token: "skWIqwPtXuiz371rCNFORViL6tVAPwLdJhX3kf1byVbIBaiPU3g8I430t3XbdxfQzrtwPvf2sZu1y5D31sz9t2dQct2eSEjMa8OniFmaEZorICttVjWK24oBjB5PV53sCPUEKF77OTUUxWow5FMkjvPq9c9buUXSw4IazSKnVqTjFTaQnivT"
     });
 
     static fetchData (groq_string: string) {

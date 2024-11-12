@@ -19,7 +19,7 @@ let visuals = [
     {
       initial: { x: -30, y: 30 },
       dragConstraints: 15,
-      containerClassname: 'absolute hidden sm:w-12 sm:h-12 sm:left-8 sm:-bottom-8  sm:block md:w-20 md:h-20 md:left-12 md:-bottom-10 md:block lg:w-28 lg:h-28 lg:left-8 lg:-bottom-10 lg:block 2xl:w-36 2xl:h-36 2xl:-left-28 2xl:-bottom-10 2xl:block',
+      containerClassname: 'absolute hidden sm:w-12 sm:h-12 sm:left-8 sm:-bottom-8 sm:block md:w-20 md:h-20 md:left-12 md:-bottom-10 md:block lg:w-28 lg:h-28 lg:left-8 lg:-bottom-10 lg:block 2xl:w-36 2xl:h-36 2xl:-left-28 2xl:-bottom-10 2xl:block',
       icon: FaStar,
       iconClassname: 'rotate-[26deg]'
     }

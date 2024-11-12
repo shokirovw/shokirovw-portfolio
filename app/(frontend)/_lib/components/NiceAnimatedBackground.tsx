@@ -1,6 +1,6 @@
 export default function AnimatedBackground ({ children }: { children: React.ReactNode }): JSX.Element {
     return (
-        <div className={"layout min-h-[100vh] flex flex-col layout-animate"}>
+        <div className={"min-h-[100vh] layout-animate"}>
             { children }
         </div>
     );

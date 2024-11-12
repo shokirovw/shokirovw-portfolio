@@ -23,7 +23,7 @@ const item = {
   
 export default function SocialLinksPanel ({ data }: { data: { href: string; iconname: IconName }[] }) {
     return (
-      <motion.div variants={container} animate="show" initial="hidden" className='flex w-fit text-white/80 text-lg font-regular space-x-10 mx-auto'>
+      <motion.div variants={container} animate="show" initial="hidden" className='flex w-fit text-white/80 text-lg font-regular space-x-10'>
           {data.map((link, i) => {
             let CurrentIcon = getIcon(link.iconname);
             return (

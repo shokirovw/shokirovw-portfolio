@@ -21,6 +21,11 @@ export const PersonalInfoSanitySchema: SanitySchemaType = {
             type: 'string'
         },
         {
+            name: 'likeCount',
+            title: 'likeCount',
+            type: 'number'
+        },
+        {
             name: 'social_media_data',
             title: "Social media data",
             type: "array",
@@ -57,6 +62,12 @@ class PersonalInformationSanity extends PersonalInformation {
     }
 }
 
-export function getPersonalInformationObject (): Promise<PersonalInformation> {
-    return new PersonalInformationSanity().init();
+export function getPersonalInformationObject (): Promise<any> {
+    return sanityFetch(groq`*[_type == "global_info"]{
+        likeCount
+    }[0]`, (db_data: any) => ({
+        likes: db_data.likeCount
+    }));
+
+    return new PersonalInformationSanity().init(); 
 }
