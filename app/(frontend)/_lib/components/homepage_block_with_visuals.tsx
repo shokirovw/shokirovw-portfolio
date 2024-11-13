@@ -1,79 +1,85 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { FaBasketball, FaHeart } from "react-icons/fa6";
-
-import { FaUserAstronaut } from "react-icons/fa6";
-import { AiFillGithub } from 'react-icons/ai';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext } from "@/components/ui/carousel"
-import Autoplay from 'embla-carousel-autoplay';
-import { useAmbienceControls } from '../scripts/ambienceControls';
-import { FaGamepad } from 'react-icons/fa';
-import P5Sketch from '../../(pages)/home/sketch_manifest';
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
 import Image from 'next/image';
-import pythonScreenshot from '../../../../public/python_screenshot.jpg'
-import cpp2 from '../../../../public/cpp2.png'
-import cpp3 from '../../../../public/cpp3.png'
-import erkinov from '../../../../public/abdulloh_erkinov.png'
-import gauss from '../../../../public/gauss.png'
-import { CgPlayList } from "react-icons/cg";
+import { motion } from 'framer-motion'; //
+
+import { FaBasketball, FaHeart, FaUserAstronaut } from "react-icons/fa6";
+import { AiFillGithub } from 'react-icons/ai';
+import { FaGamepad } from 'react-icons/fa';
 import { PiAppWindowLight } from "react-icons/pi";
-import '../../(pages)/home/style.css';
 import { TbMath } from "react-icons/tb";
 import { HiCodeBracketSquare } from "react-icons/hi2";
-import js_img from "../../../../public/javascript_2.png"
-import designer_img from "../../../../public/designer_edited.png"
 import { BiSolidBookAlt } from "react-icons/bi";
 import { FaPencilRuler } from "react-icons/fa";
 import { IoLibrary } from "react-icons/io5";
+import { CgPlayList } from "react-icons/cg";
+import { AiOutlineLoading } from "react-icons/ai";
+import { FaSpinner } from "react-icons/fa6";
+import { ImSpinner2 } from "react-icons/im";
+import { FaStar } from "react-icons/fa6";
+import { BsMoonStarsFill } from "react-icons/bs";
+import { BsStars } from "react-icons/bs";
+
+// import P5Sketch from '../../sketch_manifest'; //
+const P5Sketch = dynamic(() => import('../../sketch_manifest'))
+import { Carousel, CarouselContent, CarouselItem, CarouselNext,  } from "@/components/ui/carousel"
+
+
+
+import { useAmbienceControls } from '../scripts/ambienceControls';
+
+import pythonScreenshot from '../../../../public/python_screenshot.jpg'
+import cpp2 from '../../../../public/cpp2.png'
+import erkinov from '../../../../public/abdulloh_erkinov.png'
+import gauss from '../../../../public/gauss.png'
+import js_img from "../../../../public/javascript_2.png"
+import designer_img from "../../../../public/designer_edited.png"
 import p5js_img from "../../../../public/p5js.png"
-import Link from 'next/link';
-import { useEffect, useState } from 'react';
+
+import '../../style.css';
+import dynamic from 'next/dynamic';
 
 
 let heading_anim = {
-  initial: { transform: "translateY(60px)", opacity: 0 },
+  initial: { transform: "translateY(30px)", opacity: 0 },
   animate: { transform: "translateY(0px)", opacity: 1 },
 }
 
+function useScreenWidth () {
+  const [screenWidth, setScreenWidth] = useState(0);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  return screenWidth;
+}
 
 export default function HomepageBlockWithVisuals ({ likes }: { likes: number }) {
     const controls2 = useAmbienceControls();
 
+    
     const [likePressed, setLikePressed] = useState(true);
     const [likeCount, setLikeCount] = useState(likes);
 
-    const getScreenSize = (width) => {
-      if (width > 1536) return "2xl";
-      else if (width > 1280) return "xl";
-      else if (width > 1024) return "lg";
-      else if (width > 768) return "sm";
-      else return "xs";
-    }
+    const screenWidth = useScreenWidth();
 
-    const [screenWidth, setScreenWidth] = useState({
-      value: 0,
-      name: ""
-    });
+    const [okWeAreOn, setOkWeAreOn] = useState(false);
 
-
+  
 
     useEffect(() => {
-      const handleResize = () => {
-        setScreenWidth({
-          value: window.innerWidth,
-          name: getScreenSize(window.innerWidth)
-        });
-      };
-  
-      window.addEventListener('resize', handleResize);
-  
-      return () => {
-        window.removeEventListener('resize', handleResize);
-      };
-    }, []);
-
-    useEffect(() => {
+      ///// Determining if user has already pressed the button
       let hasDevicePressed = localStorage.getItem("likePressed");
 
       if (hasDevicePressed) {
@@ -98,15 +104,15 @@ export default function HomepageBlockWithVisuals ({ likes }: { likes: number }) 
 
     let designer_block = (
       <div className='h-fit rounded-lg z-0 group'>
-                  <div className='relative z-0 hover:cursor-pointer'>
-                  <Link href={"https://google.com"}><Image src={designer_img} alt='' className='rounded-2xl z-30 transition-all group-hover:shadow-lg group-hover:shadow-indigo-300/10 group-hover:scale-[1.01] border-2 border-indigo-500/70' /></Link>
-                  </div>
-                  <div className='py-3 px-3'>
-                    <div className='flex items-center gap-x-3 text-blue-300 text-base font-thin'><FaPencilRuler className='text-[15px]' /><p>Design Case Studies</p></div>
-                    <p className='text-emerald-50 text-xl mt-0.5 mb-2.5'>Designer portfolio</p>
-                    <Link href={"https://google.com"}><p className='text-emerald-50/60'>Explore the collection</p></Link>
-                  </div>
-                </div>
+        <div className='relative z-0 hover:cursor-pointer'>
+        <Link href={"https://google.com"}><Image src={designer_img} alt='' width={400} className='w-full rounded-2xl z-30 transition-all group-hover:shadow-lg group-hover:shadow-indigo-300/10 group-hover:scale-[1.01] border-2 border-indigo-500/70' /></Link>
+        </div>
+        <div className='py-3 px-3'>
+          <div className='flex items-center gap-x-3 text-blue-300 text-base font-thin'><FaPencilRuler className='text-[15px]' /><p>Design Case Studies</p></div>
+          <p className='text-emerald-50 text-xl mt-0.5 mb-2.5'>Designer portfolio</p>
+          <Link href={"https://google.com"}><p className='text-emerald-50/60'>Explore the collection</p></Link>
+        </div>
+      </div>
     )
 
     
@@ -124,42 +130,67 @@ export default function HomepageBlockWithVisuals ({ likes }: { likes: number }) 
               </motion.div>
 
               <div>
-                <motion.h1 className='text-4xl sm:text-5xl md:text-6xl xl:text-7xl 2xl:text-8xl' {...heading_anim} transition={{ ease: "backOut" }}>
+                <h1 className='text-4xl sm:text-5xl md:text-6xl xl:text-7xl 2xl:text-8xl'>
                   Muhammadiyor
-                </motion.h1>
-                <motion.h1 className='text-4xl sm:text-5xl md:text-6xl xl:text-7xl 2xl:text-8xl' {...heading_anim} transition={{ ease: "backOut" }}>
+                </h1>
+                <h1 className='text-4xl sm:text-5xl md:text-6xl xl:text-7xl 2xl:text-8xl'>
                   Shokirov
-                </motion.h1>
+                </h1>
               </div>
     
-              <motion.p {...heading_anim} transition={{ ease: "backOut", delay: 0.2 }} className='text-base w-10/12 mt-2 sm:text-lg sm:w-full sm:mt-0 leading-relaxed text-paragraphc lg:text-2xl' style={{ "lineHeight": 1.6 }}>
+              <p className='text-base w-10/12 mt-2 sm:text-lg sm:w-full sm:mt-0 leading-relaxed text-paragraphc lg:text-2xl' style={{ "lineHeight": 1.6 }}>
                 Mathematician and Computer Scientist with a love for clean code!
-              </motion.p>
+              </p>
 
               <div className='w-full mt-4 md:mt-8 flex gap-x-4 md:gap-x-5 gap-y-4 flex-wrap items-center'>
-                <motion.div onClick={() => { handleLikeClick(); }} className={'rounded-full shadow-lg transition-all cursor-pointer shadow-emerald-400 h-fit text-emerald-100 flex items-center gap-x-2.5 md:gap-x-3 py-2 px-5 w-fit' + (likePressed ? " bg-emerald-500/80" : " bg-emerald-600 hover:bg-emerald-500")}> 
+                <motion.div onClick={() => { handleLikeClick(); }} {...heading_anim} transition={{ ease: "backOut", delay: 0.2 }} className={'rounded-full shadow-lg transition-all cursor-pointer shadow-emerald-400 h-fit text-emerald-100 flex items-center gap-x-2.5 md:gap-x-3 py-2 px-5 w-fit' + (likePressed ? " bg-emerald-500/80" : " bg-emerald-600 hover:bg-emerald-500")}> 
                   <FaHeart className='md:w-5 md:h-5 w-3.5 h-3.5' />
                   <p className='text-sm md:text-base'>{likeCount}</p>
                 </motion.div>
-                <motion.div className='rounded-full h-fit group text-emerald-700 bg-emerald-200 flex items-center gap-x-3 py-1.5 md:py-2 px-5 w-fit'> 
+                <motion.div {...heading_anim} transition={{ ease: "backOut", delay: 0.3 }}  className='rounded-full h-fit group text-emerald-700 bg-emerald-200 flex items-center gap-x-3 py-1.5 md:py-2 px-5 w-fit'> 
                   <FaUserAstronaut className='w-6 h-6' />
                   <p className='group-hover:block hidden'>What's up?</p>
                 </motion.div>
+
                 <Link href={"https://github.com/shokirovw"} className='h-fit w-fit text-emerald-200  ml-2'>
-                  <AiFillGithub className='w-8 h-8' />
+                  <motion.div {...heading_anim} transition={{ ease: "backOut", delay: 0.4 }}>
+                    <AiFillGithub className='w-8 h-8' />
+                  </motion.div>
                 </Link>
-                <Carousel style={{ boxShadow: "0px 0px 30px 6px #34d39945" }} className='rounded-full shadow-2xl shadow-emerald-300 select-none w-64 md:w-72 py-1 px-5 xl:ml-2 text-sm md:text-base text-emerald-700 bg-emerald-200' opts={{ loop: true }}>
-                  <CarouselContent>
-                    <CarouselItem><p className='w-fit truncate text-ellipsis'>Coming soon: the C++ Series!</p></CarouselItem>
-                    <CarouselItem><p className='w-fit'>Check out new p5.js sample</p></CarouselItem>
-                  </CarouselContent>
-                  <CarouselNext className='bg-emerald-100 text-emerald-700 border-0 scale-90 md:scale-100' />
-                </Carousel>
+                <motion.div {...heading_anim} transition={{ ease: "backOut", delay: 0.5 }} >
+                  <Carousel style={{ boxShadow: "0px 0px 30px 6px #34d39945" }} className='rounded-full shadow-2xl shadow-emerald-300 select-none w-64 md:w-72 py-1 px-5 xl:ml-2 text-sm md:text-base text-emerald-700 bg-emerald-200' opts={{ loop: true }}>
+                    <CarouselContent>
+                      <CarouselItem><p className='w-fit truncate text-ellipsis'>Coming soon: the C++ Series!</p></CarouselItem>
+                      <CarouselItem><p className='w-fit'>Check out new p5.js sample</p></CarouselItem>
+                    </CarouselContent>
+                    <CarouselNext className='bg-emerald-100 text-emerald-700 border-0 scale-90 md:scale-100' />
+                  </Carousel>
+                </motion.div>
               </div>
 
           </div>
-          <div className='w-full lg:w-1/2 flex text-emerald-100 relative justify-center lg:items-center xl:items-start lg:pl-11'>
-              <P5Sketch />
+          <div className='w-full lg:w-1/2 aspect-[1/0.83] sm:aspect-[1/0.45] lg:aspect-[1/0.83] flex text-emerald-100 relative justify-center lg:items-center xl:items-start lg:pl-11'>
+              <motion.div initial={{ opacity: 0 }} animate={okWeAreOn ? { opacity: 1 } : {}} transition={{ ease: "easeOut", duration: 0.5 }} className={"w-full " + (okWeAreOn ? "block" : "hidden")}><P5Sketch setOkWeAreOn={setOkWeAreOn} /></motion.div>
+              {!okWeAreOn && (
+                // <div className='w-full h-full flex flex-col pt-40 items-center'>
+                //   <div className='relative w-fit h-fit bg-emerald-200 shadow-xl shadow-emerald-400/40 flex items-center p-14 flex-col gap-x-6 gap-y-8 rounded-3xl'>
+                //     <div className='absolute top-5 right-5'><BsStars className="text-emerald-500 w-8 h-auto" /></div>
+                //     <div className=''>
+                //       <FaUserAstronaut className='w-[170px] h-auto text-emerald-700' />
+                //     </div>
+                //     <div className='flex gap-x-4 text-xl h-fit w-fit rounded-full text-emerald-700 items-center'>
+                //       <ImSpinner2 className={"animate-spin w-6 h-auto "} />
+                //       <p>Something big is loading!</p>
+                //     </div>
+                //   </div>
+                // </div>
+                <div className='w-full h-full flex flex-col justify-center items-center'>
+                  <div className='flex flex-col gap-y-5 text-xl h-fit w-fit rounded-full text-emerald-300 items-center'>
+                      <ImSpinner2 className={"animate-spin w-14 h-auto "} />
+                      <p>Loading...</p>
+                    </div>
+                </div>
+              )}
           </div>              
         </div>
         <div className='footer w-full pb-14 mt-16 px-0'>
@@ -177,7 +208,7 @@ export default function HomepageBlockWithVisuals ({ likes }: { likes: number }) 
                   <div className='relative z-0 hover:cursor-pointer'>
                     <div className='absolute w-[96%] transition-all group-hover:-top-3 right-1/2 border border-emerald-600/30 translate-x-1/2 h-full bg-emerald-500/70 rounded-2xl -z-10 -top-1.5'></div>
                     <div className='absolute w-[92%] transition-all group-hover:-top-6 right-1/2 border border-emerald-600/30 translate-x-1/2 h-full bg-emerald-500/30 rounded-2xl -z-10 -top-3'></div>
-                    <Link href={"https://google.com"}><Image src={pythonScreenshot} alt='' className='rounded-2xl z-30 transition-all group-hover:shadow-lg group-hover:shadow-emerald-700/30 group-hover:scale-[1.01] border border-emerald-600/30' /></Link>
+                    <Link href={"https://google.com"}><Image src={pythonScreenshot} width={500} alt='' className='w-full  rounded-2xl z-30 transition-all group-hover:shadow-lg group-hover:shadow-emerald-700/30 group-hover:scale-[1.01] border border-emerald-600/30' /></Link>
                     <div className='absolute right-3 bottom-3 bg-emerald-50/5 text-sm text-emerald-50/50 rounded-lg px-3 py-1.5'>12 lessons</div>
                   </div>
                   <div className='py-3 px-3'>
@@ -188,7 +219,7 @@ export default function HomepageBlockWithVisuals ({ likes }: { likes: number }) 
                 </div>
                 <div className='h-fit rounded-lg z-0 group'>
                   <div className='relative z-0 hover:cursor-pointer'>
-                  <Link href={"https://google.com"}><Image src={erkinov} alt='' className='rounded-2xl z-30 transition-all group-hover:shadow-lg group-hover:shadow-emerald-700/30 group-hover:scale-[1.01] border border-emerald-600/30' /></Link>
+                  <Link href={"https://google.com"}><Image src={erkinov} width={400} alt='' className='w-full rounded-2xl z-30 transition-all group-hover:shadow-lg group-hover:shadow-emerald-700/30 group-hover:scale-[1.01] border border-emerald-600/30' /></Link>
                     <div className='absolute right-3 bottom-3 bg-transparent text-slate-50/95 backdrop-blur-3xl text-sm rounded-lg px-3 py-1.5'>Creative project</div>
                   </div>
                   <div className='py-3 px-3'>
@@ -217,7 +248,7 @@ export default function HomepageBlockWithVisuals ({ likes }: { likes: number }) 
               <div className='grid gap-8 auto-rows-min'>
               <div className='h-fit rounded-lg z-0 group'>
                   <div className='relative z-0 hover:cursor-pointer'>
-                  <Link href={"https://google.com"}><Image src={cpp2} alt='' className='rounded-2xl z-30 transition-all group-hover:shadow-lg group-hover:shadow-emerald-700/30 group-hover:scale-[1.01] border border-emerald-600/30' /></Link>
+                  <Link href={"https://google.com"}><Image src={cpp2} width={300} alt='' className='w-full rounded-2xl z-30 transition-all group-hover:shadow-lg group-hover:shadow-emerald-700/30 group-hover:scale-[1.01] border border-emerald-600/30' /></Link>
                     <div className='absolute right-3 bottom-3 bg-emerald-50/5 backdrop-blur-lg text-sm text-emerald-50/60 rounded-lg px-3 py-1.5'>Released soon</div>
                   </div>
                   <div className='py-3 px-3'>
@@ -236,7 +267,7 @@ export default function HomepageBlockWithVisuals ({ likes }: { likes: number }) 
                 <div className='h-fit w-full flex gap-x-5 border-emerald-400/30 rounded-3xl'>
                   <div className='flex-1 h-fit rounded-3xl group'>
                   <div className='relative z-0 hover:cursor-pointer'>
-                    <Image src={js_img} alt='' className='rounded-2xl z-30 transition-all group-hover:shadow-lg group-hover:shadow-emerald-700/30 group-hover:scale-[1.01] border border-emerald-600/30' />
+                    <Image src={js_img} alt='' width={200} className='w-full rounded-2xl z-30 transition-all group-hover:shadow-lg group-hover:shadow-emerald-700/30 group-hover:scale-[1.01] border border-emerald-600/30' />
                     <div className='absolute right-3 bottom-3 bg-emerald-50/5 backdrop-blur-lg text-xs text-emerald-50/60 rounded-lg px-1.5 py-0.5'>19 modules</div>
                   </div>
                   <div className='py-3 px-3'>
@@ -252,7 +283,7 @@ export default function HomepageBlockWithVisuals ({ likes }: { likes: number }) 
                 </div>
                 <div className='h-fit rounded-lg z-0 group'>
                   <div className='relative z-0 hover:cursor-pointer'>
-                  <Link href={"https://google.com"}><Image src={p5js_img} alt='' className='rounded-2xl z-30 transition-all group-hover:shadow-lg group-hover:shadow-emerald-700/30 group-hover:scale-[1.01] border border-emerald-600/30' /></Link>
+                  <Link href={"https://google.com"}><Image src={p5js_img} width={300} alt='' className='w-full rounded-2xl z-30 transition-all group-hover:shadow-lg group-hover:shadow-emerald-700/30 group-hover:scale-[1.01] border border-emerald-600/30' /></Link>
                     <div className='absolute right-3 bottom-3 bg-transparent text-slate-50/95 backdrop-blur-3xl text-sm rounded-lg px-3 py-1.5'>Creative project</div>
                   </div>
                   <div className='py-3 px-3'>
@@ -261,14 +292,14 @@ export default function HomepageBlockWithVisuals ({ likes }: { likes: number }) 
                     <Link href={"https://google.com"}><p className='text-emerald-50/60'>View the works</p></Link>
                   </div>
                 </div>
-                { (screenWidth.value > 640 && screenWidth.value < 1024) && designer_block }
+                { (screenWidth > 640 && screenWidth < 1024) && designer_block }
               </div>
               <div className="grid gap-8 auto-rows-min mt-0 sm:-mt-[440px] md:-mt-[500px] lg:mt-0">
                 <div className='h-fit rounded-lg z-0 group'>
                   <div className='relative z-0 hover:cursor-pointer'>
                     <div className='absolute w-[96%] transition-all group-hover:-top-3 right-1/2 border border-amber-600/30 translate-x-1/2 h-full bg-amber-500/70 rounded-2xl -z-10 -top-1.5'></div>
                     <div className='absolute w-[92%] transition-all group-hover:-top-6 right-1/2 border border-amber-600/30 translate-x-1/2 h-full bg-amber-500/30 rounded-2xl -z-10 -top-3'></div>
-                    <Link href={"https://google.com"}><Image src={gauss} alt='' className='rounded-2xl z-30 transition-all group-hover:shadow-lg group-hover:shadow-emerald-700/30 group-hover:scale-[1.01]' /></Link>
+                    <Link href={"https://google.com"}><Image src={gauss} width={500} alt='' className='w-full rounded-2xl z-30 transition-all group-hover:shadow-lg group-hover:shadow-emerald-700/30 group-hover:scale-[1.01]' /></Link>
                     <div className='absolute right-3 bottom-3 bg-transparent text-slate-50/95 backdrop-blur-3xl text-sm rounded-lg px-3 py-1.5'>10 Lessons</div>
                   </div>
                   <div className='py-3 px-3'>
@@ -277,7 +308,7 @@ export default function HomepageBlockWithVisuals ({ likes }: { likes: number }) 
                     <Link href={"https://google.com"}><p className='text-emerald-50/60'>View resources</p></Link>
                   </div>
                 </div>
-                { !(screenWidth.value > 640 && screenWidth.value < 1024) && designer_block }
+                { !(screenWidth > 640 && screenWidth < 1024) && designer_block }
               </div>
           </div>
         </div>

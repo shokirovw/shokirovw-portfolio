@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
-import HeaderPopover from '@/lib/components/header-works-popover';
+// import HeaderPopover from '@/lib/components/header-works-popover';
 import { IconName } from './ClientIcons';
 
 export type NavigationbarCompInterface = {
@@ -33,13 +33,13 @@ export default function NavigationBarComponent ({ current_pathname, items_data }
           className='flex justify-evenly mx-auto container max-w-min h-fit space-x-0 md:space-x-7 px-4 text-white text-base md:text-lg'
         >
             {items_data.map((item, i) => {
-                let inner_comp;
+                let inner_comp = item.name;
 
-                if (item.elements) {
-                    inner_comp = <HeaderPopover group_data={item}  />
-                } else {
-                    inner_comp = item.name;
-                }
+                // if (item.elements) {
+                //     inner_comp = <HeaderPopover group_data={item}  />
+                // } else {
+                //     inner_comp = item.name;
+                // }
 
                 return (
                     <Link href={item.path} key={i} prefetch>

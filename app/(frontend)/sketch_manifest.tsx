@@ -3,10 +3,11 @@
 
 'use client';
 
-import React, { Ref, useRef, useState , useEffect} from "react";
+import { useRef } from "react";
 import { type Sketch } from "@p5-wrapper/react";
 import { NextReactP5Wrapper } from '@p5-wrapper/next';
 import p5Types from 'p5';
+import { useState } from "react";
 
 function createTorusDrawer() {
     return (p5, cp, increment) => {
@@ -243,7 +244,7 @@ function generatePropsForCanvas (container) {
     }
 }
 
-function sketchObject (parentElement): Sketch {
+function sketchObject (parentElement, setOkWeAreOn): Sketch {
     let drawTorus = createTorusDrawer();
     let drawSphere = createSphereDrawer();
     let drawCircleAndPoints = createCircleDrawer();
@@ -260,6 +261,8 @@ function sketchObject (parentElement): Sketch {
             if (!canvasProps) return;
             p5.createCanvas(canvasProps.width, canvasProps.height, p5.WEBGL);
             p5.angleMode(p5.DEGREES);
+
+            setOkWeAreOn(true);
         }
 
         p5.windowResized = () => {
@@ -300,12 +303,12 @@ function sketchObject (parentElement): Sketch {
 }
 
 
-export default function P5JSSketch() {
+export default function P5JSSketch({ setOkWeAreOn }) {
   let parentRef = useRef<HTMLDivElement>();
 
   return (
     <div className="w-full" ref={parentRef}>
-        <NextReactP5Wrapper sketch={sketchObject(parentRef)} />
+        <NextReactP5Wrapper sketch={sketchObject(parentRef, setOkWeAreOn)} />
     </div>
   );
 }

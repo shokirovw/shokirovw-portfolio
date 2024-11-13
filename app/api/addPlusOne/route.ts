@@ -1,16 +1,19 @@
 import { SanityBase } from "@/app/(frontend)/_lib/scripts/SanityHelper";
 import { type NextRequest } from 'next/server'
+import { sql } from '@vercel/postgres'
  
 export async function GET(request: NextRequest) {
-    const documentId = 'ba60ff98-e0d0-4657-9533-a25a3cd3ec18';
-
     const searchParams = request.nextUrl.searchParams;
 
     if (searchParams.get('commit') == "vrai" || searchParams.get('commit') == "vraie") {
-        await SanityBase.client.patch(documentId).inc({ likeCount: 1 }).commit();
+        const a = await sql`UPDATE likes SET like_count = like_count + 1 WHERE id = 1;`;
 
-        return Response.json({ success: true });
+        if (a) {
+            return Response.json({ success: true });
+        } else {
+            return Response.json({ success: false });
+        }
     } else {
         return Response.json({ success: false });
-    }
+    } 
 }

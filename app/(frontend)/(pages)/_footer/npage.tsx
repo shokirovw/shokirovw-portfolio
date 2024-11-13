@@ -6,9 +6,9 @@ import { TbMath } from "react-icons/tb";
 import { FaStar } from "react-icons/fa";
 import { SiApplearcade } from "react-icons/si";
 import { IoAirplane } from "react-icons/io5";
-import StandartFooter from "../../_lib/components/standart_footer";
-import { getPersonalInformationObject } from "../../_lib/scripts/PersonalInfoCreator";
-import { getSocialMediaComponentsJSX } from "../../_lib/scripts/SocialMediaComponentsReady";
+// import StandartFooter from "../../_lib/components/standart_footer";
+// import { getPersonalInformationObject } from "../../_lib/scripts/PersonalInfoCreator";
+// import { getSocialMediaComponentsJSX } from "../../_lib/scripts/SocialMediaComponentsReady";
 import { useEffect, useState } from 'react';
 
 // export default async function Footer () {

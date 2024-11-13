@@ -2,40 +2,23 @@ export const revalidate = 5400;
 
 import './_lib/global_styles.css';
 import ApplyOurFont from '@/app/(frontend)/_lib/scripts/FontManager';
-// import Footer from './(pages)/_footer/npage';
-// import Header from './(pages)/_header/npage';
-import AnimatedBackground from './_lib/components/NiceAnimatedBackground';
 import EnableSmoothCursor from './_lib/scripts/SmoothCursorCreator';
-import dynamic from 'next/dynamic';
 
-
-const Header = dynamic(() => import('./(pages)/_header/npage'));
-const Footer = dynamic(() => import('./(pages)/_footer/npage'));
+import Header from './(pages)/_header/npage';
+import Footer from './(pages)/_footer/npage'
 
 export default async function MainLayout({ children }: { children: React.ReactNode }) {
+
   return (
     <ApplyOurFont>
-      <AnimatedBackground>
+      <div className={"min-h-[100vh] layout-animate"}>
         <EnableSmoothCursor>
-          <LayoutContent>
+            <Header /> 
               { children }
-          </LayoutContent>
+            <Footer /> 
         </EnableSmoothCursor>
-      </AnimatedBackground>
+        </div>
     </ApplyOurFont>
-  );
-}
-
-// Incomplete files are: NavigationbarCreator
-
-function LayoutContent ({ children }) {
-  
-  return (
-    <>
-      <Header /> 
-        {children}
-      <Footer /> 
-    </>
   );
 }
 
