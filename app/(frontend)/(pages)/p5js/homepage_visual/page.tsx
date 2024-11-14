@@ -10,6 +10,7 @@ export default function P5JSSample () {
 
     return (
         <P5JSPageCommon project_name={"Homepage Visual"}>
+            <p className="mt-2 text-emerald-100">Note: You can play with it using your cursor</p>
             <P5JSSketch setOkWeAreOn={setokWeAreOn} />
         </P5JSPageCommon>
     )

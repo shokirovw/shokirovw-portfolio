@@ -5,7 +5,7 @@ const P5JSSoundCircle = dynamic(() => import('./p5'), { ssr: false })
 
 export default function P5JSSample () {
     return (
-        <P5JSPageCommon project_name={"Sound Circle"}>
+        <P5JSPageCommon project_name={"Sound-Reactive Circle"}>
             <P5JSSoundCircle />
         </P5JSPageCommon>
     )
