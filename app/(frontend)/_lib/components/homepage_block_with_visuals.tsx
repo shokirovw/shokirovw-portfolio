@@ -105,12 +105,12 @@ export default function HomepageBlockWithVisuals ({ likes }: { likes: number }) 
     let designer_block = (
       <div className='h-fit rounded-lg z-0 group'>
         <div className='relative z-0 hover:cursor-pointer'>
-        <Link href={"https://google.com"}><Image src={designer_img} alt='' width={400} className='w-full rounded-2xl z-30 transition-all group-hover:shadow-lg group-hover:shadow-indigo-300/10 group-hover:scale-[1.01] border-2 border-indigo-500/70' /></Link>
+        <Link href={"/designer.pdf"}><Image src={designer_img} alt='' width={400} className='w-full rounded-2xl z-30 transition-all group-hover:shadow-lg group-hover:shadow-indigo-300/10 group-hover:scale-[1.01] border-2 border-indigo-500/70' /></Link>
         </div>
         <div className='py-3 px-3'>
           <div className='flex items-center gap-x-3 text-blue-300 text-base font-thin'><FaPencilRuler className='text-[15px]' /><p>Design Case Studies</p></div>
           <p className='text-emerald-50 text-xl mt-0.5 mb-2.5'>Designer portfolio</p>
-          <Link href={"https://google.com"}><p className='text-emerald-50/60'>Explore the collection</p></Link>
+          <Link href={"/designer.pdf"}><p className='text-emerald-50/60'>Explore the collection</p></Link>
         </div>
       </div>
     )
@@ -208,24 +208,24 @@ export default function HomepageBlockWithVisuals ({ likes }: { likes: number }) 
                   <div className='relative z-0 hover:cursor-pointer'>
                     <div className='absolute w-[96%] transition-all group-hover:-top-3 right-1/2 border border-emerald-600/30 translate-x-1/2 h-full bg-emerald-500/70 rounded-2xl -z-10 -top-1.5'></div>
                     <div className='absolute w-[92%] transition-all group-hover:-top-6 right-1/2 border border-emerald-600/30 translate-x-1/2 h-full bg-emerald-500/30 rounded-2xl -z-10 -top-3'></div>
-                    <Link href={"https://google.com"}><Image src={pythonScreenshot} width={500} alt='' className='w-full  rounded-2xl z-30 transition-all group-hover:shadow-lg group-hover:shadow-emerald-700/30 group-hover:scale-[1.01] border border-emerald-600/30' /></Link>
-                    <div className='absolute right-3 bottom-3 bg-emerald-50/5 text-sm text-emerald-50/50 rounded-lg px-3 py-1.5'>12 lessons</div>
+                    <Link href={"https://drive.google.com/drive/folders/1rttG6CjwDYkQlZUj9ekrB4EgWgRe4Tly?usp=sharing"}><Image src={pythonScreenshot} width={500} alt='' className='w-full  rounded-2xl z-30 transition-all group-hover:shadow-lg group-hover:shadow-emerald-700/30 group-hover:scale-[1.01] border border-emerald-600/30' /></Link>
+                    <div className='absolute right-3 bottom-3 bg-emerald-50/5 text-sm text-emerald-50/50 rounded-lg px-3 py-1.5'>18 lessons</div>
                   </div>
                   <div className='py-3 px-3'>
                     <div className='flex items-center gap-x-2 text-emerald-500 text-base font-thin'><CgPlayList className='text-xl' /><p>Videoseries</p></div>
                     <p className='text-emerald-50 text-xl mt-0.5 mb-2.5'>Hands-on Python</p>
-                    <Link href={"https://google.com"}><p className='text-emerald-50/60 hover:text-emerald-50/50 cursor-pointer'>View full course</p></Link>
+                    <Link href={"https://drive.google.com/drive/folders/1rttG6CjwDYkQlZUj9ekrB4EgWgRe4Tly?usp=sharing"}><p className='text-emerald-50/60 hover:text-emerald-50/50 cursor-pointer'>View full course</p></Link>
                   </div>
                 </div>
                 <div className='h-fit rounded-lg z-0 group'>
                   <div className='relative z-0 hover:cursor-pointer'>
-                  <Link href={"https://google.com"}><Image src={erkinov} width={400} alt='' className='w-full rounded-2xl z-30 transition-all group-hover:shadow-lg group-hover:shadow-emerald-700/30 group-hover:scale-[1.01] border border-emerald-600/30' /></Link>
+                  <Link href={"https://www.abdulloherkinov.uz/"}><Image src={erkinov} width={400} alt='' className='w-full rounded-2xl z-30 transition-all group-hover:shadow-lg group-hover:shadow-emerald-700/30 group-hover:scale-[1.01] border border-emerald-600/30' /></Link>
                     <div className='absolute right-3 bottom-3 bg-transparent text-slate-50/95 backdrop-blur-3xl text-sm rounded-lg px-3 py-1.5'>Creative project</div>
                   </div>
                   <div className='py-3 px-3'>
                     <div className='flex items-center gap-x-2 text-emerald-500 text-base font-thin'><PiAppWindowLight className='text-xl' /><p>Web Application</p></div>
                     <p className='text-emerald-50 text-xl mt-0.5 mb-2.5'>abdulloherkinov.uz</p>
-                    <Link href={"https://google.com"}><p className='text-emerald-50/60'>Visit the website</p></Link>
+                    <Link href={"https://www.abdulloherkinov.uz/"}><p className='text-emerald-50/60'>Visit the website</p></Link>
                   </div>
                 </div>
                 <div className='h-fit w-full flex gap-x-5 sm:gap-x-2 lg:gap-x-5 px-2 py-2 border-2 border-emerald-400/30 rounded-3xl'>
@@ -233,14 +233,14 @@ export default function HomepageBlockWithVisuals ({ likes }: { likes: number }) 
                     <div className=''>
                       <div className='flex items-center gap-x-2 text-emerald-500 text-base sm:text-sm lg:text-base'><IoLibrary className='text-sm' /><p>Library</p></div>
                       <p className='text-emerald-50 text-xl sm:text-base lg:text-xl mt-0.5 mb-2.5'>PHP Express</p>
-                      <Link href={"https://google.com"}><p className='text-emerald-50/60 text-sm lg:text-base'>Open repository</p></Link>
+                      <Link href={"https://github.com/shokirovw/PHP-Express"}><p className='text-emerald-50/60 text-sm lg:text-base'>Open repository</p></Link>
                     </div>
                   </div>
                   <div className='w-1/2 h-fit rounded-3xl hover:bg-emerald-500/20 p-4 bg-emerald-500/10'>
                     <div className=''>
                       <div className='flex items-center gap-x-2 text-emerald-500 text-base sm:text-sm'><p>Browser Extenstion</p></div>
                       <p className='text-emerald-50 text-xl sm:text-base lg:text-xl mt-0.5 mb-2.5'>CloseConnect</p>
-                      <Link href={"https://google.com"}><p className='text-emerald-50/60 text-sm lg:text-base'>Open repository</p></Link>
+                      <Link href={"https://github.com/shokirovw/CloseConnect"}><p className='text-emerald-50/60 text-sm lg:text-base'>Open repository</p></Link>
                     </div>
                   </div>
                 </div>
@@ -248,48 +248,48 @@ export default function HomepageBlockWithVisuals ({ likes }: { likes: number }) 
               <div className='grid gap-8 auto-rows-min'>
               <div className='h-fit rounded-lg z-0 group'>
                   <div className='relative z-0 hover:cursor-pointer'>
-                  <Link href={"https://google.com"}><Image src={cpp2} width={300} alt='' className='w-full rounded-2xl z-30 transition-all group-hover:shadow-lg group-hover:shadow-emerald-700/30 group-hover:scale-[1.01] border border-emerald-600/30' /></Link>
+                  <Link href={"https://drive.google.com/file/d/1M7Cgrv1LRGM4GcNtcqN2_LUz3kMzeZP9/view?usp=sharing"}><Image src={cpp2} width={300} alt='' className='w-full rounded-2xl z-30 transition-all group-hover:shadow-lg group-hover:shadow-emerald-700/30 group-hover:scale-[1.01] border border-emerald-600/30' /></Link>
                     <div className='absolute right-3 bottom-3 bg-emerald-50/5 backdrop-blur-lg text-sm text-emerald-50/60 rounded-lg px-3 py-1.5'>Released soon</div>
                   </div>
                   <div className='py-3 px-3'>
                     <div className='flex items-center gap-x-2 text-emerald-500 text-base font-thin'><CgPlayList className='text-xl' /><p>Videoseries</p></div>
                     <p className='text-emerald-50 text-xl mt-0.5 mb-2.5'>Fundamentals of C++</p>
-                    <Link href={"https://google.com"}><p className='text-emerald-50/60'>View the first lesson</p></Link>
+                    <Link href={"https://drive.google.com/file/d/1M7Cgrv1LRGM4GcNtcqN2_LUz3kMzeZP9/view?usp=sharing"}><p className='text-emerald-50/60'>View the first lesson</p></Link>
                   </div>
                 </div>
                 <div className='h-fit rounded-2xl z-0 transition-all group border-2 border-emerald-300/20 hover:from-emerald-600/20 hover:to-emerald-600/60 bg-gradient-to-bl from-emerald-600/20 to-emerald-600/50'>
                   <div className='py-4 px-4'>
-                    <div className='flex items-center gap-x-2 text-emerald-500 text-base font-thin mb-1'><HiCodeBracketSquare className='text-xl' /><p>Code Tutorials · 10 modules</p></div>
+                    <div className='flex items-center gap-x-2 text-emerald-500 text-base font-thin mb-1'><HiCodeBracketSquare className='text-xl' /><p>Code Tutorials · 23 modules</p></div>
                       <p className='text-emerald-50 text-xl mt-0.5 mb-2.5'>Design Patterns in C++</p>
-                      <Link href={"https://google.com"} className='w-fit'><p className='text-emerald-50/60 w-fit'>View full course</p></Link>
+                      <Link href={"https://drive.google.com/drive/folders/1G-zhXsinxj5Kk2ZLzC8cMoQ3E8IzrcMQ?usp=sharing"} className='w-fit'><p className='text-emerald-50/60 w-fit'>View full course</p></Link>
                   </div>
                 </div>
                 <div className='h-fit w-full flex gap-x-5 border-emerald-400/30 rounded-3xl'>
                   <div className='flex-1 h-fit rounded-3xl group'>
                   <div className='relative z-0 hover:cursor-pointer'>
-                    <Image src={js_img} alt='' width={200} className='w-full rounded-2xl z-30 transition-all group-hover:shadow-lg group-hover:shadow-emerald-700/30 group-hover:scale-[1.01] border border-emerald-600/30' />
+                    <Link href={"https://drive.google.com/drive/folders/1MQ3MxQKe7GvJizNf6hoE4s2O4r6IXfHM?usp=sharing"}><Image src={js_img} alt='' width={200} className='w-full rounded-2xl z-30 transition-all group-hover:shadow-lg group-hover:shadow-emerald-700/30 group-hover:scale-[1.01] border border-emerald-600/30' /></Link>
                     <div className='absolute right-3 bottom-3 bg-emerald-50/5 backdrop-blur-lg text-xs text-emerald-50/60 rounded-lg px-1.5 py-0.5'>19 modules</div>
                   </div>
                   <div className='py-3 px-3'>
                     <p className='text-emerald-50 text-lg mb-2'>NodeJS Reference</p>
-                    <Link href={"https://google.com"}><p className='text-emerald-50/60 text-sm'>View full reference</p></Link>
+                    <Link href={"https://drive.google.com/drive/folders/1MQ3MxQKe7GvJizNf6hoE4s2O4r6IXfHM?usp=sharing"}><p className='text-emerald-50/60 text-sm'>View full reference</p></Link>
                   </div>
                   </div>
                   <div className='flex-1 h-fit rounded-3xl border-emerald-500/70 p-7 py-6 bg-emerald-500/10 hover:bg-emerald-500/20'>
                     <div className='flex items-center gap-x-2 text-emerald-500 text-base font-thin'><BiSolidBookAlt className='text-sm' /><p>Reference</p></div>
                     <p className='text-emerald-50 text-xl leading-snug mt-0.5 mb-2.5'>Advanced Javascript</p>
-                    <Link href={"https://google.com"}><p className='text-emerald-50/60 text-base'>Open reference folder</p></Link>
+                    <Link href={"https://drive.google.com/drive/folders/1C_hp2j5SKMBco05QP3XQDwemctu4bhZb?usp=sharing"}><p className='text-emerald-50/60 text-base'>Open reference folder</p></Link>
                   </div>
                 </div>
                 <div className='h-fit rounded-lg z-0 group'>
                   <div className='relative z-0 hover:cursor-pointer'>
-                  <Link href={"https://google.com"}><Image src={p5js_img} width={300} alt='' className='w-full rounded-2xl z-30 transition-all group-hover:shadow-lg group-hover:shadow-emerald-700/30 group-hover:scale-[1.01] border border-emerald-600/30' /></Link>
+                  <Link href={"/p5js"}><Image src={p5js_img} width={300} alt='' className='w-full rounded-2xl z-30 transition-all group-hover:shadow-lg group-hover:shadow-emerald-700/30 group-hover:scale-[1.01] border border-emerald-600/30' /></Link>
                     <div className='absolute right-3 bottom-3 bg-transparent text-slate-50/95 backdrop-blur-3xl text-sm rounded-lg px-3 py-1.5'>Creative project</div>
                   </div>
                   <div className='py-3 px-3'>
                     <div className='flex items-center gap-x-2 text-emerald-500 text-base font-thin'><PiAppWindowLight className='text-xl' /><p>Computer Graphics</p></div>
                     <p className='text-emerald-50 text-xl mt-0.5 mb-2.5'>P5.JS samples</p>
-                    <Link href={"https://google.com"}><p className='text-emerald-50/60'>View the works</p></Link>
+                    <Link href={"/p5js"}><p className='text-emerald-50/60'>View the works</p></Link>
                   </div>
                 </div>
                 { (screenWidth > 640 && screenWidth < 1024) && designer_block }
@@ -299,13 +299,13 @@ export default function HomepageBlockWithVisuals ({ likes }: { likes: number }) 
                   <div className='relative z-0 hover:cursor-pointer'>
                     <div className='absolute w-[96%] transition-all group-hover:-top-3 right-1/2 border border-amber-600/30 translate-x-1/2 h-full bg-amber-500/70 rounded-2xl -z-10 -top-1.5'></div>
                     <div className='absolute w-[92%] transition-all group-hover:-top-6 right-1/2 border border-amber-600/30 translate-x-1/2 h-full bg-amber-500/30 rounded-2xl -z-10 -top-3'></div>
-                    <Link href={"https://google.com"}><Image src={gauss} width={500} alt='' className='w-full rounded-2xl z-30 transition-all group-hover:shadow-lg group-hover:shadow-emerald-700/30 group-hover:scale-[1.01]' /></Link>
-                    <div className='absolute right-3 bottom-3 bg-transparent text-slate-50/95 backdrop-blur-3xl text-sm rounded-lg px-3 py-1.5'>10 Lessons</div>
+                    <Link href={"https://drive.google.com/drive/folders/1ZxHnyIm0vgpf60-N_3deH0iku4Q8Mpc5?usp=sharing"}><Image src={gauss} width={500} alt='' className='w-full rounded-2xl z-30 transition-all group-hover:shadow-lg group-hover:shadow-emerald-700/30 group-hover:scale-[1.01]' /></Link>
+                    <div className='absolute right-3 bottom-3 bg-transparent text-slate-50/95 backdrop-blur-3xl text-sm rounded-lg px-3 py-1.5'>10 modules</div>
                   </div>
                   <div className='py-3 px-3'>
                     <div className='flex items-center gap-x-2 text-emerald-500 text-base font-thin'><TbMath className='text-xl' /><p>Tutorials</p></div>
                     <p className='text-emerald-50 text-xl mt-0.5 mb-2.5'>Math Videos & Presentations</p>
-                    <Link href={"https://google.com"}><p className='text-emerald-50/60'>View resources</p></Link>
+                    <Link href={"https://drive.google.com/drive/folders/1ZxHnyIm0vgpf60-N_3deH0iku4Q8Mpc5?usp=sharing"}><p className='text-emerald-50/60'>View resources</p></Link>
                   </div>
                 </div>
                 { !(screenWidth > 640 && screenWidth < 1024) && designer_block }

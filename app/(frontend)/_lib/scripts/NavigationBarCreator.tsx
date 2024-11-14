@@ -1,4 +1,4 @@
-import { getCurrentPathname } from "./PageHelper";
+//import { getCurrentPathname } from "./PageHelper";
 import { NavigationbarCompInterface } from "../../_lib/components/NavigationBarComponent";
 import NavigationBarComponent from "../../_lib/components/NavigationBarComponent";
 import { AllIconNames, IconName } from "../components/ClientIcons";
@@ -66,12 +66,16 @@ function ConvertFromDBToCompInterface (nav_data: SanityNavItemData[]): Navigatio
 export default async function OurNavigationBar () {
     //const current_path = getCurrentPathname();
 
-    let raw_nav_data = (await fetchNavDataFromSanity()).reverse(); 
+    // let raw_nav_data = (await fetchNavDataFromSanity()).reverse(); 
 
-    let navdata = ConvertFromDBToCompInterface(raw_nav_data);
+    // let navdata = ConvertFromDBToCompInterface(raw_nav_data);
+
+    // console.log(navdata);
+
+    let navdata = [ { name: 'Home', path: '/', iconname: '' } ]
 
     return (
-        <NavigationBarComponent current_pathname={"/home"} items_data={navdata} />
+        <NavigationBarComponent current_pathname={"/"} items_data={navdata} />
     );
 }
 

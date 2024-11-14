@@ -1,5 +1,6 @@
 'use client';
 import Image from 'next/image';
+import Link from 'next/link'
 import img from "../../../favicon.ico"
 import { FaItunesNote } from "react-icons/fa6";
 import { TbMath } from "react-icons/tb";
@@ -10,6 +11,14 @@ import { IoAirplane } from "react-icons/io5";
 // import { getPersonalInformationObject } from "../../_lib/scripts/PersonalInfoCreator";
 // import { getSocialMediaComponentsJSX } from "../../_lib/scripts/SocialMediaComponentsReady";
 import { useEffect, useState } from 'react';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
 
 // export default async function Footer () {
 //     const SocialMediaDesigner = await getSocialMediaComponentsJSX();
@@ -40,6 +49,20 @@ export default function Footer () {
     };
   }, []);
 
+  let contactme_block = (
+    <Dialog>
+      <DialogTrigger><div className='sm:bg-emerald-600 bg-sky-600 absolute top-1/2 -translate-y-1/2 left-[30%] opacity-100 z-50 text-white px-3 text-sm md:text-base rounded-full w-fit'>Contact me</div></DialogTrigger>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle className='text-zinc-900'>Muhammmadiyor Shokirov</DialogTitle>
+          <DialogDescription className='pt-2'>
+            <p>Gmail: shokirowv@gmail.com</p>
+          </DialogDescription>
+        </DialogHeader>
+      </DialogContent>
+    </Dialog>
+  )
+
     return (
         <div className='w-full container max-w-7xl px-6 mx-auto mt-16 md:mt-0 pb-20'>
             <div className='space-y-6 relative'>
@@ -57,20 +80,22 @@ export default function Footer () {
                     </div>
                   </div>
                 <div className='relative z-10 flex-grow'>
-                  {screenWidth > 640 && (<div className='bg-emerald-600 absolute top-1/2 -translate-y-1/2 left-[30%] opacity-100 z-50 text-white px-3 text-sm md:text-base rounded-full w-fit'>Contact me</div>)}
+                  {screenWidth > 640 && contactme_block}
                   <div className='absolute w-full -z-10 h-px top-1/2 -translate-y-1/2 left-0 bg-white/20'></div>
                   <TbMath className='hidden md:block absolute backdrop-blur-sm px-3 box-content right-[20%] top-1/2 -translate-y-1/2 text-3xl  text-teal-300' />
                 </div>
               </div>
               <div className='relative z-10 py-4'>
-                <div className='bg-[#0fc4b0] text-white px-3 right-1/4 absolute top-1/2 -translate-y-1/2 text-sm md:text-base  rounded-full w-fit z-50'>Github</div>
+                <Link href={"https://github.com/shokirovw"}><div className='bg-[#0fc4b0] text-white px-3 right-1/4 absolute top-1/2 -translate-y-1/2 text-sm md:text-base  rounded-full w-fit z-50'>Github</div></Link>
                 <div className='absolute w-full h-px top-1/2 -translate-y-1/2 left-0 bg-white/20 -z-10'></div>
                 <FaItunesNote className='absolute text-2xl backdrop-blur-sm px-3 box-content left-[20%] top-1/2 -translate-y-1/2 text-teal-300' />
                 { screenWidth < 768 && (<IoAirplane className='absolute text-2xl backdrop-blur-sm px-3 box-content right-[5%] top-1/2 -translate-y-1/2 text-teal-300' />) }
                 
               </div>
               <div className='relative z-10 py-4'>
-                <div className='bg-sky-600 text-white px-3 left-1/4 absolute top-1/2 -translate-y-1/2 text-sm md:text-base  rounded-full w-fit z-50'>{screenWidth <= 640 ? "Contact" : "0x74517910"}</div>
+                {screenWidth > 640 && (<div className='bg-sky-600 text-white px-3 left-1/4 absolute top-1/2 -translate-y-1/2 text-sm md:text-base  rounded-full w-fit z-50'>0x74517910</div>)}
+                {screenWidth <= 640 && (contactme_block) }
+                {/* <div className='bg-sky-600 text-white px-3 left-1/4 absolute top-1/2 -translate-y-1/2 text-sm md:text-base  rounded-full w-fit z-50'>{screenWidth <= 640 ? "Contact" : "0x74517910"}</div> */}
                 <div className='absolute w-full h-px top-1/2 -translate-y-1/2 left-0 bg-white/20 -z-10'></div>
                 <FaStar className='absolute text-2xl backdrop-blur-sm px-3 box-content left-[5%] top-1/2 -translate-y-1/2 text-teal-300' />
                 <SiApplearcade className='absolute text-2xl backdrop-blur-sm px-3 box-content right-[25%] md:left-[50%] top-1/2 -translate-y-1/2 text-teal-300' />
