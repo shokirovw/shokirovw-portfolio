@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 import { IconName } from './ClientIcons';
 
 export type NavigationbarCompInterface = {
-    name: string; path: `/${string}` | ''; iconname?: IconName | ''; elements?: NavigationbarCompInterface[];
+    name: string; path: string; iconname?: IconName | ''; elements?: NavigationbarCompInterface[];
 }
 
 const motionElements = {
@@ -22,7 +22,7 @@ const motionElements = {
   }
 }
 
-export default function NavigationBarComponent ({ current_pathname, items_data }: { current_pathname: string; items_data: NavigationbarCompInterface[] }) {
+export default function NavigationBarComponent ({ current_pathname, items_data }: { current_pathname: string; items_data: any }) {
     function highlightCurrentPage (path: string) {
       if (current_pathname == path) return 'bg-white/10 ring-1 ring-gray-100/10'
       else return ''
