@@ -7,9 +7,26 @@
         text-rendering: optimizeLegibility;
     }
 
-    html::-webkit-scrollbar {
-        display: none;
-    }
+    /* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    @apply bg-emerald-500;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    @apply bg-emerald-200 rounded-full;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-emerald-300;
+  }
+    
 
     p,div,span,a {
         @apply font-regular;
