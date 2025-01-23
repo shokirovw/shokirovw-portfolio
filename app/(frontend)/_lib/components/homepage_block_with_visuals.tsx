@@ -187,7 +187,7 @@ export default function HomepageBlockWithVisuals ({ likes }: { likes: number }) 
               </div>
     
               <p className='text-base w-10/12 mt-2 sm:text-lg sm:w-full sm:mt-0 leading-relaxed text-paragraphc lg:text-2xl' style={{ "lineHeight": 1.6 }}>
-                Mathematician and Computer Scientist with a love for clean code!
+                Making learning fun, intuitive, and packed with meaningful insights!
               </p>
 
               <div className='w-full mt-4 md:mt-8 flex gap-x-4 md:gap-x-5 gap-y-4 flex-wrap items-center'>
